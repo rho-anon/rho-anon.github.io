@@ -1,0 +1,1095 @@
+<!DOCTYPE html><html lang="en" data-theme="light" data-template="article" data-toc-auto-collapse="1"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RHO: Your Coding Agent is Secretly a Roboticist</title><meta name="description" content="Anonymous project page for a paper under double-anonymous review."><link rel="canonical" href="http://localhost:4321/"><meta property="og:type" content="article"><meta property="og:title" content="RHO: Your Coding Agent is Secretly a Roboticist"><meta property="og:description" content="Anonymous project page for a paper under double-anonymous review."><meta property="og:url" content="http://localhost:4321/"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="RHO: Your Coding Agent is Secretly a Roboticist"><meta property="og:image" content="http://localhost:4321/thumb.auto.jpg?v=6da8d02453"><meta property="og:image:alt" content="RHO: Your Coding Agent is Secretly a Roboticist"><meta property="article:author" content="Anonymous"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="RHO: Your Coding Agent is Secretly a Roboticist"><meta name="twitter:description" content="Anonymous project page for a paper under double-anonymous review."><meta name="twitter:image" content="http://localhost:4321/thumb.auto.jpg?v=6da8d02453"><meta name="twitter:image:alt" content="RHO: Your Coding Agent is Secretly a Roboticist"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"RHO: Your Coding Agent is Secretly a Roboticist","description":"Anonymous project page for a paper under double-anonymous review.","author":[{"@type":"Person","name":"Anonymous"}],"publisher":{"@type":"Organization","name":"Hugging Face","url":"https://huggingface.co"},"keywords":"robotics","mainEntityOfPage":"http://localhost:4321/","image":["http://localhost:4321/thumb.auto.jpg?v=6da8d02453"]}</script><script>
+      (() => {
+        try {
+          const saved = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const theme = saved || (prefersDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch {}
+      })();
+    </script><script>
+      // Debounce all ResizeObserver callbacks to prevent layout thrashing
+      // during window resize (10+ D3 embeds re-render simultaneously otherwise)
+      (() => {
+        const _RO = window.ResizeObserver;
+        if (!_RO) return;
+        const DEBOUNCE_MS = 100;
+        window.ResizeObserver = class {
+          constructor(cb) {
+            this._timer = null;
+            this._ro = new _RO((entries, observer) => {
+              clearTimeout(this._timer);
+              this._timer = setTimeout(() => {
+                requestAnimationFrame(() => cb(entries, observer));
+              }, DEBOUNCE_MS);
+            });
+          }
+          observe(el, opts) { this._ro.observe(el, opts); }
+          unobserve(el) { this._ro.unobserve(el); }
+          disconnect() { this._ro.disconnect(); clearTimeout(this._timer); }
+        };
+      })();
+    </script><script type="module" src="/scripts/color-palettes.js"></script><link rel="stylesheet" href="/_astro/index.DFJheK74.css">
+<link rel="stylesheet" href="/_astro/dataviz.lxb86f7V.css"><script type="module" src="/_astro/hoisted.DgD9CNnD.js"></script>
+<script type="module" src="/_astro/page.Un1KI8nM.js"></script></head> <body> <button id="theme-toggle" aria-label="Toggle color theme" data-astro-cid-x3pjskd3> <span class="icon-wrapper" data-astro-cid-x3pjskd3> <svg class="icon icon--sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <circle cx="12" cy="12" r="5" data-astro-cid-x3pjskd3></circle> <line x1="12" y1="1" x2="12" y2="4" data-astro-cid-x3pjskd3></line> <line x1="12" y1="20" x2="12" y2="23" data-astro-cid-x3pjskd3></line> <line x1="1" y1="12" x2="4" y2="12" data-astro-cid-x3pjskd3></line> <line x1="20" y1="12" x2="23" y2="12" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" data-astro-cid-x3pjskd3></line> <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" data-astro-cid-x3pjskd3></line> <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" data-astro-cid-x3pjskd3></line> <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" data-astro-cid-x3pjskd3></line> </svg> <svg class="icon icon--moon" style="opacity:0" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-x3pjskd3> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-x3pjskd3></path> </svg> </span>  </button>  <section class="hero" data-astro-cid-uzw5or4x> <h1 class="hero-title" data-astro-cid-uzw5or4x>RHO: Your Coding Agent is Secretly a Roboticist</h1> <div class="hero-banner" data-astro-cid-uzw5or4x> <rho-walkthrough aria-label="How Robotics Harness Optimization works" data-astro-cid-zdsvjcfn> <div class="walk-stage" data-astro-cid-zdsvjcfn> <img src="/rho-figure.webp" width="2400" height="920" fetchpriority="high" alt="RHO: a coding agent samples and edits repository candidates, evaluates them in Robosuite, LIBERO and RAI, uses scores and execution traces, retains Pareto-optimal candidates, and deploys a selected Repository-as-Policy on robots." data-astro-cid-zdsvjcfn> <svg width="0" height="0" aria-hidden="true" style="position:absolute" data-astro-cid-zdsvjcfn><defs data-astro-cid-zdsvjcfn><mask id="rho-base-cutouts" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox" data-astro-cid-zdsvjcfn><rect width="1" height="1" fill="white" data-astro-cid-zdsvjcfn></rect><rect x=".01" y=".27826" width=".19833" height=".44348" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".26667" y=".08478" width=".0825" height=".26304" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".23167" y=".54783" width=".0825" height=".16957" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".32083" y=".54783" width=".0825" height=".16957" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".41" y=".54783" width=".0825" height=".16957" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".5325" y=".28261" width=".12333" height=".40652" fill="black" data-astro-cid-zdsvjcfn></rect><rect x=".74333" y=".06522" width=".2525" height=".8" fill="black" data-astro-cid-zdsvjcfn></rect></mask></defs></svg> <svg class="walk-parts" viewBox="0 0 1200 460" aria-hidden="true" data-astro-cid-zdsvjcfn> <g class="part part-repos" data-astro-cid-zdsvjcfn><svg x="12" y="128" width="238" height="204" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-12" y="-128" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-agent" data-astro-cid-zdsvjcfn><svg x="320" y="39" width="99" height="121" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-320" y="-39" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-bench bench-one" data-astro-cid-zdsvjcfn><svg x="278" y="252" width="99" height="78" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-278" y="-252" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-bench bench-two" data-astro-cid-zdsvjcfn><svg x="385" y="252" width="99" height="78" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-385" y="-252" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-bench bench-three" data-astro-cid-zdsvjcfn><svg x="492" y="252" width="99" height="78" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-492" y="-252" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-policy" data-astro-cid-zdsvjcfn><svg x="639" y="130" width="148" height="187" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-639" y="-130" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="part part-robot" data-astro-cid-zdsvjcfn><svg x="892" y="30" width="303" height="368" overflow="hidden" data-astro-cid-zdsvjcfn><image href="/rho-figure.webp" x="-892" y="-30" width="1200" height="460" data-astro-cid-zdsvjcfn></image></svg></g> <g class="travelling-repo" data-astro-cid-zdsvjcfn><rect width="27" height="33" rx="3" fill="#fff" stroke="#137c82" stroke-width="1.5" data-astro-cid-zdsvjcfn></rect><path d="M5 9h16M5 14h12M5 19h16M5 24h8" stroke="#137c82" stroke-width="1.5" data-astro-cid-zdsvjcfn></path></g> <g class="agent-rings" fill="none" stroke="#137c82" data-astro-cid-zdsvjcfn><circle cx="369" cy="111" r="23" data-astro-cid-zdsvjcfn></circle><circle cx="369" cy="111" r="32" data-astro-cid-zdsvjcfn></circle></g> <g class="trial-meters" fill="#137c82" data-astro-cid-zdsvjcfn><rect x="278" y="326" width="99" height="4" data-astro-cid-zdsvjcfn></rect><rect x="385" y="326" width="99" height="4" data-astro-cid-zdsvjcfn></rect><rect x="492" y="326" width="99" height="4" data-astro-cid-zdsvjcfn></rect></g> </svg> <svg class="walk-overlay" viewBox="0 0 1200 460" aria-hidden="true" data-astro-cid-zdsvjcfn> <defs data-astro-cid-zdsvjcfn><mask id="rho-focus-mask" data-astro-cid-zdsvjcfn><rect width="1200" height="460" fill="white" data-astro-cid-zdsvjcfn></rect><rect class="focus-window" x="0" y="0" width="1200" height="460" rx="22" fill="black" data-astro-cid-zdsvjcfn></rect></mask></defs> <rect width="1200" height="460" fill="white" opacity=".6" mask="url(#rho-focus-mask)" data-astro-cid-zdsvjcfn></rect> <path class="walk-flow" d="M215 120 C240 77 282 79 316 86" data-astro-cid-zdsvjcfn></path> <circle class="walk-packet" r="4" fill="#137c82" data-astro-cid-zdsvjcfn></circle> </svg> </div> <div class="kinova-stage" hidden data-astro-cid-zdsvjcfn> <div class="kinova-heading" data-astro-cid-zdsvjcfn><strong data-astro-cid-zdsvjcfn>Kinova Gen3 + Franka</strong><span data-astro-cid-zdsvjcfn>Illustrative animation · drag to orbit</span></div> <iframe title="Franka and Kinova Gen3 articulated motion: illustrative animation" data-src="/kinova/index.html?initialCameraPosition=0,-2.6,1.3&initialCameraLookAt=0,0,0.45&initialCameraUp=0,0,1&initialCameraFov=0.55" loading="lazy" referrerpolicy="no-referrer" data-astro-cid-zdsvjcfn></iframe> </div> <div class="walk-controls" hidden data-astro-cid-zdsvjcfn> <div class="walk-toolbar" data-astro-cid-zdsvjcfn><span class="walk-eyebrow" data-astro-cid-zdsvjcfn>THE RHO LOOP</span><div class="walk-actions" data-astro-cid-zdsvjcfn><button type="button" class="play" aria-label="Play walkthrough" data-astro-cid-zdsvjcfn>Play walkthrough <span aria-hidden="true" data-astro-cid-zdsvjcfn>▷</span></button><button type="button" class="overview" aria-pressed="true" data-astro-cid-zdsvjcfn>Full figure</button></div></div> <div class="walk-steps" role="group" aria-label="Walkthrough steps" data-astro-cid-zdsvjcfn> <button type="button" data-step="0" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>01</span><span data-astro-cid-zdsvjcfn>Sample</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button><button type="button" data-step="1" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>02</span><span data-astro-cid-zdsvjcfn>Edit</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button><button type="button" data-step="2" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>03</span><span data-astro-cid-zdsvjcfn>Evaluate</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button><button type="button" data-step="3" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>04</span><span data-astro-cid-zdsvjcfn>Feedback</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button><button type="button" data-step="4" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>05</span><span data-astro-cid-zdsvjcfn>Retain</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button><button type="button" data-step="5" aria-pressed="false" data-astro-cid-zdsvjcfn><span class="step-number" data-astro-cid-zdsvjcfn>06</span><span data-astro-cid-zdsvjcfn>Deploy</span><i aria-hidden="true" data-astro-cid-zdsvjcfn></i></button> </div> <div class="walk-description" data-astro-cid-zdsvjcfn><span class="walk-counter" aria-hidden="true" data-astro-cid-zdsvjcfn>RHO</span><div data-astro-cid-zdsvjcfn><h2 data-astro-cid-zdsvjcfn>From coding agent to robot policy</h2><p data-astro-cid-zdsvjcfn>Follow the loop, or choose a step to explore how repositories become executable robot policies.</p></div></div> <span class="walk-status" role="status" aria-live="polite" data-astro-cid-zdsvjcfn></span> </div> <script type="application/json" class="walk-data">[["Sample","Start from a repository","RHO samples a candidate repository from the Pareto frontier for the coding agent to improve."],["Edit","Improve the robotics harness","The tool-enabled coding agent edits the repository: code, prompts, and tools can all be part of the harness."],["Evaluate","Run trials in REaaS","Evaluate the candidate in any benchmark exposed through REaaS. In this paper, we use Robosuite, LIBERO, and RAI. Trials produce scores and execution traces."],["Feedback","Turn execution into feedback","Scores and execution traces return to the coding agent, informing the next revision."],["Retain","Keep the Pareto-optimal candidates","RHO retains Pareto-optimal candidates and samples again, repeating the optimization loop."],["Deploy","Sim-to-real transfer of the evolved RaP","We deploy the RHO-evolved Repository-as-Policy (RaP) on real robots and demonstrate sim-to-real transfer across robot embodiments and to unseen objects."]]</script> </rho-walkthrough>   </div> <p class="hero-desc" data-astro-cid-uzw5or4x>Evolving multi-file repositories into robot policies</p> </section> <script>
+  (() => {
+    const el = document.querySelector(".hero-title");
+    if (!el) return;
+    const len = (el.textContent || "").length;
+    if (len > 100) el.dataset.titleSize = "sm";
+    else if (len > 60) el.dataset.titleSize = "md";
+  })();
+</script> <header class="meta" aria-label="Article meta information" data-astro-cid-uzw5or4x> <div class="meta-container" data-astro-cid-uzw5or4x> <div class="meta-container-cell" data-astro-cid-uzw5or4x> <h3 data-astro-cid-uzw5or4x>Author</h3> <ul class="authors" data-astro-cid-uzw5or4x> <li data-astro-cid-uzw5or4x> Anonymous </li> </ul> </div>      </div> </header>    <section class="content-grid"> <nav class="table-of-contents toc-loading" aria-label="Table of Contents" data-auto-collapse="1"> <div class="title">Table of Contents</div> <div id="article-toc-placeholder"></div> </nav> <!-- Mobile sidebar --> <button class="toc-mobile-toggle" aria-label="Open table of contents" aria-expanded="false"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <line x1="3" y1="6" x2="21" y2="6"></line> <line x1="3" y1="12" x2="21" y2="12"></line> <line x1="3" y1="18" x2="21" y2="18"></line> </svg> </button> <div class="toc-mobile-backdrop" aria-hidden="true"></div> <aside class="toc-mobile-sidebar toc-loading" aria-label="Table of Contents"> <div class="toc-mobile-sidebar__header"> <span class="toc-mobile-sidebar__title">Table of Contents</span> <div class="toc-mobile-sidebar__actions"> <button class="toc-mobile-sidebar__theme" aria-label="Toggle color theme"> <svg class="icon light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="5"></circle> <line x1="12" y1="1" x2="12" y2="4"></line> <line x1="12" y1="20" x2="12" y2="23"></line> <line x1="1" y1="12" x2="4" y2="12"></line> <line x1="20" y1="12" x2="23" y2="12"></line> <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"></line> <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"></line> <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"></line> <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"></line> </svg> <svg class="icon dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> </button> <button class="toc-mobile-sidebar__close" aria-label="Close table of contents"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <line x1="18" y1="6" x2="6" y2="18"></line> <line x1="6" y1="6" x2="18" y2="18"></line> </svg> </button> </div> </div> <div class="toc-mobile-sidebar__body" id="article-toc-mobile-placeholder"></div> </aside> <script>
+  // Build TOC from article headings (h2/h3/h4) and render into the sticky aside
+  const buildTOC = () => {
+    const holder = document.getElementById("article-toc-placeholder");
+    const holderMobile = document.getElementById(
+      "article-toc-mobile-placeholder",
+    );
+    // Always rebuild TOC to avoid stale entries
+    if (holder) holder.innerHTML = "";
+    if (holderMobile) holderMobile.innerHTML = "";
+    const articleRoot = document.querySelector("section.content-grid main");
+    if (!articleRoot) return;
+    const headings = articleRoot.querySelectorAll("h2, h3, h4");
+    if (!headings.length) return;
+
+    // Inclure tous les titres H2/H3/H4 sans filtrer "Table of contents"
+    const headingsArr = Array.from(headings);
+    if (!headingsArr.length) return;
+
+    // Ensure unique ids for headings (deduplicate duplicates)
+    const usedIds = new Set();
+    const slugify = (s) =>
+      String(s || "")
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/[^a-z0-9_\-]/g, "");
+    headingsArr.forEach((h) => {
+      let id = (h.id || "").trim();
+      if (!id) {
+        const base = slugify(h.textContent || "");
+        id = base || "section";
+      }
+      let candidate = id;
+      let n = 2;
+      while (usedIds.has(candidate)) {
+        candidate = `${id}-${n++}`;
+      }
+      if (h.id !== candidate) h.id = candidate;
+      usedIds.add(candidate);
+    });
+
+    const nav = document.createElement("nav");
+    let ulStack = [document.createElement("ul")];
+    nav.appendChild(ulStack[0]);
+
+    const levelOf = (tag) => (tag === "H2" ? 2 : tag === "H3" ? 3 : 4);
+    let prev = 2;
+    let headingCount = 0;
+    headingsArr.forEach((h) => {
+      const lvl = levelOf(h.tagName);
+      // adjust depth
+      while (lvl > prev) {
+        const ul = document.createElement("ul");
+        ulStack[ulStack.length - 1].lastElementChild?.appendChild(ul);
+        ulStack.push(ul);
+        prev++;
+      }
+      while (lvl < prev) {
+        ulStack.pop();
+        prev--;
+      }
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.textContent = h.textContent;
+      a.target = "_self";
+      li.appendChild(a);
+      // Ajouter un index unique à chaque heading pour le tracking
+      li.setAttribute("data-heading-idx", String(headingCount));
+      headingCount++;
+      ulStack[ulStack.length - 1].appendChild(li);
+    });
+
+    if (holder) holder.appendChild(nav);
+    const navClone = nav.cloneNode(true);
+    if (holderMobile) holderMobile.appendChild(navClone);
+
+    // active link on scroll
+    const links = [
+      ...(holder ? holder.querySelectorAll("a") : []),
+      ...(holderMobile ? holderMobile.querySelectorAll("a") : []),
+    ];
+    // Read breakpoint from CSS var and set autoCollapse only on desktop (disabled on mobile)
+    const getCollapsePx = () => {
+      const root = document.documentElement;
+      const raw = getComputedStyle(root)
+        .getPropertyValue("--bp-content-collapse")
+        .trim();
+      return raw || "1100px";
+    };
+    const mq = window.matchMedia(`(max-width: ${getCollapsePx()})`);
+    const attrEnabled =
+      document
+        .querySelector(".table-of-contents")
+        ?.getAttribute("data-auto-collapse") === "1";
+    let autoCollapse = attrEnabled && !mq.matches;
+
+    // Inject styles for collapsible & animation (tous les niveaux)
+    const ensureStyles = () => {
+      if (document.getElementById("toc-collapse-style")) return;
+      const style = document.createElement("style");
+      style.id = "toc-collapse-style";
+      style.textContent = `
+        .table-of-contents nav.table-of-contents-collapsible li > ul,
+        .toc-mobile-sidebar nav.table-of-contents-collapsible li > ul { overflow: hidden; transition: height 200ms ease; }
+        .table-of-contents nav.table-of-contents-collapsible li.collapsed > ul,
+        .toc-mobile-sidebar nav.table-of-contents-collapsible li.collapsed > ul { display: block; }
+      `;
+      document.head.appendChild(style);
+    };
+    ensureStyles();
+
+    const getAllItemsWithChildren = () => {
+      const sideNav = holder ? holder.querySelector("nav") : null;
+      const mobileNav = holderMobile ? holderMobile.querySelector("nav") : null;
+      const q = (navEl) =>
+        navEl
+          ? Array.from(navEl.querySelectorAll("li[data-heading-idx]")).filter(
+              (li) => li.querySelector(":scope > ul"),
+            )
+          : [];
+      return {
+        sideNav,
+        mobileNav,
+        sideItems: q(sideNav),
+        mobileItems: q(mobileNav),
+      };
+    };
+
+    const setNavCollapsible = () => {
+      const sideNav = holder ? holder.querySelector("nav") : null;
+      const mobileNav = holderMobile ? holderMobile.querySelector("nav") : null;
+      if (sideNav) sideNav.classList.add("table-of-contents-collapsible");
+      if (mobileNav) mobileNav.classList.add("table-of-contents-collapsible");
+    };
+
+    const measure = (el) => {
+      if (!el) return 0;
+      // Temporarily set height to auto to measure scrollHeight reliably
+      const prev = el.style.height;
+      el.style.height = "auto";
+
+      // Force un reflow pour que le navigateur calcule les wraps de texte
+      void el.offsetHeight;
+
+      // Maintenant scrollHeight inclut la vraie hauteur avec tous les line wraps
+      const h = el.scrollHeight;
+      el.style.height = prev || "";
+      return h;
+    };
+
+    // Tracker les animations en cours pour pouvoir les annuler
+    const activeAnimations = new Map();
+
+    const cancelAnimation = (el) => {
+      if (!el) return;
+      const animData = activeAnimations.get(el);
+      if (animData) {
+        // Nettoyer le listener de l'animation précédente
+        el.removeEventListener("transitionend", animData.onEnd);
+        activeAnimations.delete(el);
+      }
+    };
+
+    const animateTo = (el, target) => {
+      if (!el) return;
+
+      // Annuler toute animation en cours sur cet élément
+      cancelAnimation(el);
+
+      // Obtenir la hauteur ACTUELLE (même si une animation est en cours)
+      const current = parseFloat(getComputedStyle(el).height) || 0;
+
+      // Si on est déjà proche de la cible, pas besoin d'animer
+      if (Math.abs(current - target) < 1) {
+        el.style.height = target ? "auto" : "0px";
+        return;
+      }
+
+      // Démarrer depuis la hauteur actuelle
+      el.style.height = current + "px";
+      // Force reflow
+      void el.offsetHeight;
+
+      // Aller vers la cible
+      el.style.height = target + "px";
+
+      // Créer le listener de fin
+      const onEnd = (e) => {
+        if (e.propertyName !== "height") return;
+        el.removeEventListener("transitionend", onEnd);
+        activeAnimations.delete(el);
+        if (target > 0) el.style.height = "auto";
+      };
+
+      // Sauvegarder le listener pour pouvoir l'annuler plus tard
+      activeAnimations.set(el, { onEnd });
+      el.addEventListener("transitionend", onEnd);
+    };
+
+    let prevActiveIdx = -1;
+    let prevActiveElements = new Set();
+    let prevActiveHeadingId = null;
+
+    const setCollapsedState = (activeIdx) => {
+      if (!autoCollapse) return;
+      if (activeIdx == null || activeIdx < 0) activeIdx = 0;
+      const { sideItems, mobileItems } = getAllItemsWithChildren();
+
+      // Trouver l'élément <li> correspondant au heading actif et tous ses ancêtres
+      const getActiveAndAncestors = (items, targetIdx) => {
+        const toExpand = new Set();
+
+        // Trouver le <li> qui correspond au targetIdx
+        const findActiveLi = (li) => {
+          const idx = Number(li.getAttribute("data-heading-idx") || "-1");
+          if (idx === targetIdx) {
+            return li;
+          }
+
+          const childUl = li.querySelector(":scope > ul");
+          if (!childUl) return null;
+
+          const childLis = childUl.querySelectorAll(
+            ":scope > li[data-heading-idx]",
+          );
+          for (const child of childLis) {
+            const found = findActiveLi(child);
+            if (found) return found;
+          }
+          return null;
+        };
+
+        let activeLi = null;
+        for (const li of items) {
+          activeLi = findActiveLi(li);
+          if (activeLi) break;
+        }
+
+        if (!activeLi) return toExpand;
+
+        // Collecter l'élément actif lui-même
+        const activeIdx = Number(
+          activeLi.getAttribute("data-heading-idx") || "-1",
+        );
+        toExpand.add(activeIdx);
+
+        // Remonter et collecter TOUS les ancêtres, sans condition
+        // La structure de la TOC détermine automatiquement qui doit être ouvert
+        let current = activeLi;
+        while (current) {
+          const parent = current.parentElement?.closest("li[data-heading-idx]");
+          if (parent) {
+            const parentIdx = Number(
+              parent.getAttribute("data-heading-idx") || "-1",
+            );
+            toExpand.add(parentIdx);
+            current = parent;
+          } else {
+            break;
+          }
+        }
+
+        return toExpand;
+      };
+
+      const update = (items) => {
+        const newActiveAncestors = getActiveAndAncestors(items, activeIdx);
+
+        // Étape 0 : Annuler TOUTES les animations en cours avant de commencer
+        // Cela évite les conflits si l'utilisateur scroll rapidement
+        items.forEach((li) => {
+          const sub = li.querySelector(":scope > ul");
+          if (sub) cancelAnimation(sub);
+        });
+
+        // Étape 1 : Identifier TOUS les éléments qui vont changer d'état
+        const allChanges = [];
+        items.forEach((li) => {
+          const sub = li.querySelector(":scope > ul");
+          if (!sub) return;
+
+          const idx = Number(li.getAttribute("data-heading-idx") || "-1");
+
+          // Un élément doit être expanded SI il contient (directement ou indirectement) le heading actif
+          // Donc soit il est dans newActiveAncestors, soit un de ses descendants l'est
+          let shouldBeExpanded = false;
+
+          // Vérifier si cet élément ou un de ses descendants est dans le chemin actif
+          const allDescendants = li.querySelectorAll("li[data-heading-idx]");
+          const allRelatedIndices = [
+            idx,
+            ...Array.from(allDescendants).map((d) =>
+              Number(d.getAttribute("data-heading-idx") || "-1"),
+            ),
+          ];
+
+          // Si au moins un de ces indices est dans newActiveAncestors, garder ouvert
+          shouldBeExpanded = allRelatedIndices.some((i) =>
+            newActiveAncestors.has(i),
+          );
+
+          const isCurrentlyCollapsed = li.classList.contains("collapsed");
+
+          const isChanging =
+            (shouldBeExpanded && isCurrentlyCollapsed) ||
+            (!shouldBeExpanded && !isCurrentlyCollapsed);
+
+          if (isChanging) {
+            allChanges.push({ li, sub, shouldBeExpanded, idx });
+          }
+        });
+
+        // Étape 2 : Parmi tous les changements, trouver ceux qui sont des "top-level"
+        // (= n'ont PAS d'ancêtre qui change aussi)
+        const topLevelChanges = [];
+        const descendantChanges = [];
+
+        allChanges.forEach((change) => {
+          let hasAncestorChanging = false;
+
+          // Remonter l'arbre pour voir si un ancêtre change aussi
+          let currentLi = change.li;
+          while (currentLi) {
+            const parentLi = currentLi.parentElement?.closest(
+              "li[data-heading-idx]",
+            );
+            if (!parentLi) break;
+
+            const parentIdx = Number(
+              parentLi.getAttribute("data-heading-idx") || "-1",
+            );
+
+            // Vérifier si ce parent est dans la liste des changements
+            const parentIsChanging = allChanges.some(
+              (c) => c.idx === parentIdx,
+            );
+            if (parentIsChanging) {
+              hasAncestorChanging = true;
+              break;
+            }
+
+            currentLi = parentLi;
+          }
+
+          if (hasAncestorChanging) {
+            descendantChanges.push(change);
+          } else {
+            topLevelChanges.push(change);
+          }
+        });
+
+        // Étape 3 : Appliquer TOUS les descendants instantanément (sans animation)
+        // Ceci doit être fait AVANT toute animation pour que les hauteurs soient correctes
+        if (descendantChanges.length > 0) {
+          descendantChanges.forEach(({ li, sub, shouldBeExpanded }) => {
+            const oldTransition = sub.style.transition;
+            sub.style.transition = "none";
+
+            if (shouldBeExpanded) {
+              li.classList.remove("collapsed");
+              sub.style.height = "auto";
+            } else {
+              li.classList.add("collapsed");
+              sub.style.height = "0px";
+            }
+
+            // Forcer un reflow immédiat pour cet élément
+            void sub.offsetHeight;
+            sub.style.transition = oldTransition || "";
+          });
+
+          // Forcer un reflow global pour que TOUS les changements soient appliqués
+          void document.body.offsetHeight;
+
+          // IMPORTANT : Attendre un frame pour que le navigateur ait fini tous les calculs
+          // avant de mesurer les hauteurs des parents
+        }
+
+        // Étape 4 : Animer SEULEMENT les top-level avec requestAnimationFrame
+        // Les descendants sont déjà dans leur état final, donc la hauteur du parent sera correcte
+        if (topLevelChanges.length > 0) {
+          // Double requestAnimationFrame pour être sûr que le DOM est stabilisé
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              topLevelChanges.forEach(({ li, sub, shouldBeExpanded }) => {
+                if (shouldBeExpanded) {
+                  li.classList.remove("collapsed");
+
+                  // CRITIQUE : Avant de mesurer, mettre ABSOLUMENT TOUS les sous-éléments
+                  // dans leur état final (expanded OU collapsed) de manière synchrone
+                  const allInnerItems = sub.querySelectorAll(
+                    "li[data-heading-idx]",
+                  );
+
+                  // D'abord, désactiver toutes les transitions
+                  allInnerItems.forEach((innerLi) => {
+                    const innerSub = innerLi.querySelector(":scope > ul");
+                    if (innerSub) {
+                      innerSub.style.transition = "none";
+                    }
+                  });
+
+                  // Ensuite, mettre chaque élément dans son état final
+                  allInnerItems.forEach((innerLi) => {
+                    const innerIdx = Number(
+                      innerLi.getAttribute("data-heading-idx") || "-1",
+                    );
+                    const innerSub = innerLi.querySelector(":scope > ul");
+                    if (innerSub) {
+                      if (newActiveAncestors.has(innerIdx)) {
+                        // Cet élément devrait être expanded
+                        innerLi.classList.remove("collapsed");
+                        innerSub.style.height = "auto";
+                      } else {
+                        // Cet élément devrait être collapsed
+                        innerLi.classList.add("collapsed");
+                        innerSub.style.height = "0px";
+                      }
+                    }
+                  });
+
+                  // Forcer un reflow global pour que TOUT soit calculé
+                  void sub.offsetHeight;
+
+                  // Réactiver les transitions
+                  allInnerItems.forEach((innerLi) => {
+                    const innerSub = innerLi.querySelector(":scope > ul");
+                    if (innerSub) {
+                      innerSub.style.transition = "";
+                    }
+                  });
+
+                  // Maintenant on peut mesurer avec confiance : tous les éléments
+                  // sont dans leur état final définitif
+                  const target = measure(sub);
+                  animateTo(sub, target);
+                } else {
+                  li.classList.add("collapsed");
+                  animateTo(sub, 0);
+                }
+              });
+            });
+          });
+        }
+
+        prevActiveElements = newActiveAncestors;
+      };
+
+      update(sideItems);
+      update(mobileItems);
+      setNavCollapsible();
+      prevActiveIdx = activeIdx;
+    };
+
+    // When switching between desktop/mobile, refresh autoCollapse and expand all on mobile
+    const expandAll = () => {
+      const { sideItems, mobileItems } = getAllItemsWithChildren();
+      const expand = (items) =>
+        items.forEach((li) => {
+          li.classList.remove("collapsed");
+          const sub = li.querySelector(":scope > ul");
+          if (sub) sub.style.height = "auto";
+        });
+      expand(sideItems);
+      expand(mobileItems);
+    };
+
+    const onMqChange = () => {
+      autoCollapse = attrEnabled && !mq.matches;
+      if (!autoCollapse) {
+        expandAll();
+      } else {
+        setCollapsedState(prevActiveIdx);
+      }
+    };
+    if (mq.addEventListener) mq.addEventListener("change", onMqChange);
+    else if (mq.addListener) mq.addListener(onMqChange);
+
+    // Constantes de configuration
+    const SCROLL_OFFSET_PX = 60; // Offset pour détecter quand un heading est "actif" (position sticky)
+    const SCROLL_THROTTLE_MS = 50; // Throttle le scroll à max 20 fois par seconde
+    const URL_DEBOUNCE_MS = 300; // Debounce la mise à jour d'URL à 300ms
+    const COLLAPSE_DEBOUNCE_MS = 100; // Debounce pour le collapse state
+    const ANIMATION_DURATION_MS = 250; // Durée des animations de collapse
+
+    // Debounce pour traiter la dernière mise à jour après que le scroll se stabilise
+    let scrollDebounceTimer = null;
+    let lastRequestedIdx = -1;
+    let isProcessing = false;
+    let hasUserScrolled = false; // Flag pour savoir si l'utilisateur a vraiment scrollé
+    let urlUpdateTimer = null; // Timer pour debounce la mise à jour de l'URL
+    let lastScrollTime = 0; // Pour le throttling
+
+    // Fonction pour mettre à jour l'URL avec l'ancre actuelle (avec debounce)
+    const updateURL = (headingId, force = false) => {
+      if (!headingId) return;
+
+      // Ne pas mettre à jour l'URL si l'utilisateur n'a pas scrollé et que ce n'est pas forcé
+      if (!force && !hasUserScrolled) return;
+
+      // Debounce la mise à jour d'URL pour éviter trop d'appels à history.pushState
+      clearTimeout(urlUpdateTimer);
+      urlUpdateTimer = setTimeout(
+        () => {
+          const newUrl = `${window.location.pathname}${window.location.search}#${headingId}`;
+
+          // Mettre à jour l'URL sans recharger la page
+          if (window.location.href !== newUrl) {
+            history.pushState(null, null, newUrl);
+
+            // Communiquer avec la fenêtre parente (format officiel Hugging Face)
+            if (window.parent !== window) {
+              try {
+                window.parent.postMessage(
+                  {
+                    queryString: "",
+                    hash: headingId,
+                  },
+                  "https://huggingface.co",
+                );
+              } catch (e) {
+                // Ignorer les erreurs silencieusement
+              }
+            }
+          }
+        },
+        force ? 0 : URL_DEBOUNCE_MS,
+      ); // Pas de debounce si forcé (navigation initiale)
+    };
+
+    // Fonction utilitaire pour trouver le heading actif selon la position du scroll
+    const findActiveHeading = () => {
+      let activeIdx = -1;
+      let activeHeadingId = null;
+
+      for (let i = headingsArr.length - 1; i >= 0; i--) {
+        const top = headingsArr[i].getBoundingClientRect().top;
+        if (top - SCROLL_OFFSET_PX <= 0) {
+          links.forEach((l) => l.classList.remove("active"));
+          const id = "#" + headingsArr[i].id;
+          const actives = Array.from(links).filter(
+            (l) => l.getAttribute("href") === id,
+          );
+          actives.forEach((a) => a.classList.add("active"));
+          activeIdx = i;
+          activeHeadingId = headingsArr[i].id;
+          break;
+        }
+      }
+
+      return { activeIdx, activeHeadingId };
+    };
+
+    const onScroll = () => {
+      // Throttling : ne traiter le scroll que toutes les SCROLL_THROTTLE_MS ms
+      const now = performance.now();
+      if (now - lastScrollTime < SCROLL_THROTTLE_MS) {
+        return;
+      }
+      lastScrollTime = now;
+
+      // Marquer que l'utilisateur a scrollé
+      hasUserScrolled = true;
+
+      // Optimisation : utiliser requestAnimationFrame pour batch les getBoundingClientRect
+      // et éviter les reflows multiples
+      requestAnimationFrame(() => {
+        const { activeIdx, activeHeadingId } = findActiveHeading();
+
+        // Mettre à jour l'URL si la section active a changé (avec debounce intégré)
+        if (activeHeadingId && activeHeadingId !== prevActiveHeadingId) {
+          updateURL(activeHeadingId);
+          prevActiveHeadingId = activeHeadingId;
+        }
+
+        if (activeIdx === prevActiveIdx) return;
+
+        // Sauvegarder la dernière demande
+        lastRequestedIdx = activeIdx;
+
+        // Si on est en train de traiter, ne rien faire (on traitera la dernière demande après)
+        if (isProcessing) return;
+
+        // Debounce : attendre un peu que le scroll se stabilise
+        clearTimeout(scrollDebounceTimer);
+        scrollDebounceTimer = setTimeout(() => {
+          // Traiter la dernière demande
+          if (lastRequestedIdx !== prevActiveIdx) {
+            isProcessing = true;
+            setCollapsedState(lastRequestedIdx);
+            // Le processing flag sera réinitialisé après les animations
+            setTimeout(() => {
+              isProcessing = false;
+              // Si une nouvelle demande est arrivée pendant qu'on traitait, la traiter maintenant
+              if (lastRequestedIdx !== prevActiveIdx) {
+                onScroll();
+              }
+            }, ANIMATION_DURATION_MS); // Attendre que les animations soient lancées
+          }
+        }, COLLAPSE_DEBOUNCE_MS);
+      });
+    };
+
+    // Version d'initialisation synchrone de setCollapsedState (sans animations)
+    const setCollapsedStateSync = (activeIdx) => {
+      if (!autoCollapse) return;
+      if (activeIdx == null || activeIdx < 0) activeIdx = 0;
+      const { sideItems, mobileItems } = getAllItemsWithChildren();
+
+      const getActiveAndAncestors = (items, targetIdx) => {
+        const toExpand = new Set();
+        const findActiveLi = (li) => {
+          const idx = Number(li.getAttribute("data-heading-idx") || "-1");
+          if (idx === targetIdx) return li;
+          const childUl = li.querySelector(":scope > ul");
+          if (!childUl) return null;
+          const childLis = childUl.querySelectorAll(
+            ":scope > li[data-heading-idx]",
+          );
+          for (const child of childLis) {
+            const found = findActiveLi(child);
+            if (found) return found;
+          }
+          return null;
+        };
+
+        let activeLi = null;
+        for (const li of items) {
+          activeLi = findActiveLi(li);
+          if (activeLi) break;
+        }
+        if (!activeLi) return toExpand;
+
+        const activeIdxNum = Number(
+          activeLi.getAttribute("data-heading-idx") || "-1",
+        );
+        toExpand.add(activeIdxNum);
+
+        let current = activeLi;
+        while (current) {
+          const parent = current.parentElement?.closest("li[data-heading-idx]");
+          if (parent) {
+            const parentIdx = Number(
+              parent.getAttribute("data-heading-idx") || "-1",
+            );
+            toExpand.add(parentIdx);
+            current = parent;
+          } else {
+            break;
+          }
+        }
+        return toExpand;
+      };
+
+      const applyStateSync = (items) => {
+        const newActiveAncestors = getActiveAndAncestors(items, activeIdx); // activeIdx du scope parent
+
+        // Désactiver toutes les transitions temporairement
+        items.forEach((li) => {
+          const sub = li.querySelector(":scope > ul");
+          if (sub) {
+            sub.style.transition = "none";
+          }
+        });
+
+        // Appliquer l'état sans animation
+        items.forEach((li) => {
+          const sub = li.querySelector(":scope > ul");
+          if (!sub) return;
+
+          const idx = Number(li.getAttribute("data-heading-idx") || "-1");
+          const allDescendants = li.querySelectorAll("li[data-heading-idx]");
+          const allRelatedIndices = [
+            idx,
+            ...Array.from(allDescendants).map((d) =>
+              Number(d.getAttribute("data-heading-idx") || "-1"),
+            ),
+          ];
+
+          const shouldBeExpanded = allRelatedIndices.some((i) =>
+            newActiveAncestors.has(i),
+          );
+
+          if (shouldBeExpanded) {
+            li.classList.remove("collapsed");
+            sub.style.height = "auto";
+          } else {
+            li.classList.add("collapsed");
+            sub.style.height = "0px";
+          }
+        });
+
+        // Forcer un reflow
+        void document.body.offsetHeight;
+
+        // Réactiver les transitions après un court délai
+        requestAnimationFrame(() => {
+          items.forEach((li) => {
+            const sub = li.querySelector(":scope > ul");
+            if (sub) {
+              sub.style.transition = "";
+            }
+          });
+        });
+      };
+
+      applyStateSync(sideItems);
+      applyStateSync(mobileItems);
+      setNavCollapsible();
+      prevActiveIdx = activeIdx;
+    };
+
+    // Fonction pour déclencher le fade-in une fois que tout est prêt
+    const showTOC = () => {
+      // Utiliser plusieurs RAF pour s'assurer que le DOM est complètement rendu
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Petit délai supplémentaire pour être sûr que tout est stabilisé
+          setTimeout(() => {
+            const tocElement = document.querySelector(".table-of-contents");
+            const tocMobileElement = document.querySelector(
+              ".toc-mobile-sidebar",
+            );
+            if (tocElement) {
+              tocElement.classList.remove("toc-loading");
+              tocElement.classList.add("toc-loaded");
+            }
+            if (tocMobileElement) {
+              tocMobileElement.classList.remove("toc-loading");
+              tocMobileElement.classList.add("toc-loaded");
+            }
+          }, 50); // Petit délai pour s'assurer que tout est rendu
+        });
+      });
+    };
+
+    // If auto-collapse, appliquer l'état de manière synchrone (sans animations)
+    if (autoCollapse) {
+      setCollapsedStateSync(0);
+      // Attendre que tout soit rendu avant d'afficher
+      showTOC();
+    } else {
+      // Si pas d'auto-collapse, afficher immédiatement
+      showTOC();
+    }
+
+    window.addEventListener("scroll", onScroll);
+
+    // Gérer la navigation par ancres au chargement de la page
+    const handleInitialNavigation = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+          // Attendre que le DOM soit prêt puis faire défiler vers l'élément
+          setTimeout(() => {
+            targetElement.scrollIntoView({ block: "start" });
+            // Mettre à jour l'URL après le scroll (forcé car c'est une navigation initiale avec ancre)
+            setTimeout(() => {
+              updateURL(hash.substring(1), true); // Enlever le # du hash, forcer la mise à jour
+            }, 100);
+          }, 100);
+        }
+      }
+      // Ne plus mettre à jour l'URL automatiquement si pas d'ancre
+    };
+
+    // Initialize state (sans mettre à jour l'URL)
+    // Ne pas marquer hasUserScrolled ici pour éviter les mises à jour d'URL au chargement
+    const { activeIdx: initialActiveIdx, activeHeadingId: initialHeadingId } =
+      findActiveHeading();
+    if (initialHeadingId) {
+      prevActiveHeadingId = initialHeadingId;
+    }
+    prevActiveIdx = initialActiveIdx;
+
+    // Gérer la navigation initiale
+    handleInitialNavigation();
+
+    // Gérer les événements de navigation du navigateur (boutons précédent/suivant)
+    window.addEventListener("popstate", (event) => {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({ block: "start" });
+        }
+      } else {
+        // Si pas d'ancre, aller au début de la page
+        window.scrollTo({ top: 0 });
+      }
+    });
+
+    // Marquer qu'un scroll a eu lieu quand l'utilisateur clique sur un lien du TOC
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        hasUserScrolled = true;
+      });
+    });
+
+    // Mobile sidebar open/close logic
+    const sidebar = document.querySelector(".toc-mobile-sidebar");
+    const backdrop = document.querySelector(".toc-mobile-backdrop");
+    const toggleBtn = document.querySelector(".toc-mobile-toggle");
+    const closeBtn = document.querySelector(".toc-mobile-sidebar__close");
+
+    const openSidebar = () => {
+      if (!sidebar || !backdrop || !toggleBtn) return;
+      sidebar.classList.add("open");
+      backdrop.classList.add("open");
+      toggleBtn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+
+      // Scroll to the active link so the user sees where they are
+      requestAnimationFrame(() => {
+        const activeLink = sidebar.querySelector("a.active");
+        if (activeLink) {
+          const body = sidebar.querySelector(".toc-mobile-sidebar__body");
+          if (body) {
+            const linkTop = activeLink.offsetTop - body.offsetTop;
+            body.scrollTop = Math.max(0, linkTop - body.clientHeight / 3);
+          }
+        }
+      });
+    };
+    const closeSidebar = () => {
+      if (!sidebar || !backdrop || !toggleBtn) return;
+      sidebar.classList.remove("open");
+      backdrop.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    if (toggleBtn) toggleBtn.addEventListener("click", openSidebar);
+    if (closeBtn) closeBtn.addEventListener("click", closeSidebar);
+    if (backdrop) backdrop.addEventListener("click", closeSidebar);
+
+    // Sidebar theme toggle — reuses the same logic as the main #theme-toggle
+    const sidebarThemeBtn = document.querySelector(".toc-mobile-sidebar__theme");
+    if (sidebarThemeBtn) {
+      sidebarThemeBtn.addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", next);
+        document.documentElement.dataset.theme = next;
+      });
+    }
+
+    // Close sidebar when a TOC link is clicked
+    if (holderMobile) {
+      holderMobile.addEventListener("click", (ev) => {
+        const target = ev.target;
+        const anchor =
+          target && "closest" in target ? target.closest("a") : null;
+        if (anchor instanceof HTMLAnchorElement) {
+          closeSidebar();
+        }
+      });
+    }
+
+    // Close sidebar on Escape key
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && sidebar?.classList.contains("open")) {
+        closeSidebar();
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", buildTOC, { once: true });
+  } else {
+    buildTOC();
+  }
+</script>  <main> <h2 id="abstract"><a href="#abstract">Abstract</a></h2>
+
+<h2 id="method"><a href="#method">Method</a></h2>
+<rho-method data-astro-cid-wpd4hfkb> <div class="lesson-intro" data-astro-cid-wpd4hfkb><span class="eyebrow" data-astro-cid-wpd4hfkb>AN INTERACTIVE GUIDE</span><h3 data-astro-cid-wpd4hfkb>How does a repository learn to be a roboticist?</h3><p data-astro-cid-wpd4hfkb>A robot drops an object. The useful lesson might be a better grasp, a corrected coordinate transform, or a new verification step. RHO turns that experience into edits to a reusable policy repository.</p><p data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>HELIX</strong> is the reflective evolutionary optimizer used in RHO. Follow the mechanism below: what changes, how feedback guides an edit, and how specialists contribute to future improvements.</p><div class="legend" data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>HELIX · reflective evolution</span><span class="tag rho" data-astro-cid-wpd4hfkb>RHO enhancement</span><span class="note" data-astro-cid-wpd4hfkb>All interactive scores, files, and traces below are illustrative.</span></div></div> <nav class="lesson-nav" aria-label="Method lesson" data-astro-cid-wpd4hfkb><a href="#learn-repository" data-astro-cid-wpd4hfkb>Repository</a><a href="#learn-sampling" data-astro-cid-wpd4hfkb>Sampling</a><a href="#learn-budget" data-astro-cid-wpd4hfkb>Budget</a><a href="#learn-mutation" data-astro-cid-wpd4hfkb>Mutation</a><a href="#learn-gates" data-astro-cid-wpd4hfkb>Gates</a><a href="#learn-frontier" data-astro-cid-wpd4hfkb>Frontier</a><a href="#learn-isolation" data-astro-cid-wpd4hfkb>Isolation</a><a href="#learn-deploy" data-astro-cid-wpd4hfkb>Deployment</a></nav> <section id="learn-repository" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>01</span><div data-astro-cid-wpd4hfkb><span class="tag rho" data-astro-cid-wpd4hfkb>RHO · search space</span><h3 data-astro-cid-wpd4hfkb>The candidate is an entire repository.</h3></div></div><p data-astro-cid-wpd4hfkb>Reflective optimization can improve code, prompts, or other artifacts using execution feedback. RHO makes a multi-file repository the policy artifact: a <strong data-astro-cid-wpd4hfkb>Repository-as-Policy (RaP)</strong>. One mutation can change several cooperating modules.</p> <div class="experiment repo-experiment" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>EXPLORE THE SEARCH SPACE <span data-astro-cid-wpd4hfkb>Illustrative repository</span></div><div class="repo-layout" data-astro-cid-wpd4hfkb><div class="file-tree" role="group" aria-label="Repository files" data-astro-cid-wpd4hfkb><button data-file="0" aria-pressed="true" data-astro-cid-wpd4hfkb><span aria-hidden="true" data-astro-cid-wpd4hfkb>↳</span> main.py</button><button data-file="1" data-astro-cid-wpd4hfkb><span aria-hidden="true" data-astro-cid-wpd4hfkb>↳</span> perception.py</button><button data-file="2" data-astro-cid-wpd4hfkb><span aria-hidden="true" data-astro-cid-wpd4hfkb>↳</span> motion.py</button><button data-file="3" data-astro-cid-wpd4hfkb><span aria-hidden="true" data-astro-cid-wpd4hfkb>↳</span> prompts.md</button></div><div class="file-content" data-astro-cid-wpd4hfkb><span class="file-name" data-astro-cid-wpd4hfkb>main.py</span><h4 class="file-heading" data-astro-cid-wpd4hfkb>Route the instruction</h4><p class="file-description" data-astro-cid-wpd4hfkb>The public entry point connects a task instruction to reusable behavior.</p><div class="repo-flow" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>Observe</span><b data-astro-cid-wpd4hfkb>→</b><span data-astro-cid-wpd4hfkb>Decide</span><b data-astro-cid-wpd4hfkb>→</b><span data-astro-cid-wpd4hfkb>Act</span></div></div></div><p class="takeaway" data-astro-cid-wpd4hfkb>A change to a pose convention can require matching edits in perception, motion, and outcome checks. The search unit must accommodate that coordination.</p></div> <details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Seed, evaluator, and optimization variable</summary><p data-astro-cid-wpd4hfkb>The artifact defines what can be learned. A prompt-only artifact permits prompt edits; a repository permits new control logic, interfaces, and reusable helpers. The seed’s structure is therefore an inductive bias: it can make useful edits easier or encourage repeated monolithic rewrites. HELIX changes the artifact through source edits while keeping the underlying model’s weights fixed.</p><p data-astro-cid-wpd4hfkb>Start with a seed repository that exposes the required invocation signature, such as <code data-astro-cid-wpd4hfkb>run(ctx)</code>. A skeleton supplies the initial interfaces and file structure. The user supplies an evaluator that maps a repository and task instance to a scalar score and structured side information.</p><div class="equation" data-astro-cid-wpd4hfkb>E(R, τ) = (s<sub data-astro-cid-wpd4hfkb>τ</sub>(R), z<sub data-astro-cid-wpd4hfkb>τ</sub>(R))</div><p data-astro-cid-wpd4hfkb>Here τ identifies a task, trial, and seed; s is the benchmark score and z carries diagnostics. The scalar score can be a rich shaped reward that credits partial progress or binary task success (0 for failure, 1 for success). In our CaP-Bench experiments, s ∈ [0, 1] is the environment’s final shaped reward. HELIX imposes no language constraint on repositories beyond what the target runtime accepts.</p></details> </section> <section id="learn-sampling" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>02</span><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>HELIX · parent and minibatch</span><h3 data-astro-cid-wpd4hfkb>Choose what to improve and where to test it.</h3></div></div><p data-astro-cid-wpd4hfkb>The seed is evaluated to initialize the frontier. After that, HELIX samples a parent from candidates that preserve useful strengths on the chosen frontier. A candidate’s chance of being selected is proportional to its best-key coverage after pruning. We will build this frontier explicitly in step 5.</p><p data-astro-cid-wpd4hfkb>Next, sample a small training minibatch. <strong data-astro-cid-wpd4hfkb>RHO adds stratified batch sampling:</strong> choose task families, then sample trials or seeds within those families. This gives task families a share of each batch even when their trial counts differ. Increase the number of groups to broaden task coverage; increase examples per group to expose variation across seeds. Both increase the amount of feedback and evaluation work.</p> <div class="experiment sampler" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>DESIGN THE NEXT MUTATION’S FEEDBACK <span data-astro-cid-wpd4hfkb>Three toy task families</span></div><div class="controls" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Sampler <select class="sampler-mode" data-astro-cid-wpd4hfkb><option value="stratified" data-astro-cid-wpd4hfkb>RHO: stratified by task</option><option value="flat" data-astro-cid-wpd4hfkb>Flat instance sampling</option></select></label><button class="draw-batch primary" data-astro-cid-wpd4hfkb>Draw next batch</button></div><div class="batch-settings" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Task groups per batch <output class="group-count" data-astro-cid-wpd4hfkb>2</output><input class="batch-groups" aria-label="Task groups per batch" type="range" min="1" max="3" step="1" value="2" data-astro-cid-wpd4hfkb><small data-astro-cid-wpd4hfkb>num_sampled_groups</small></label><label data-astro-cid-wpd4hfkb>Examples per group <output class="example-count" data-astro-cid-wpd4hfkb>1</output><input class="batch-examples" aria-label="Examples per group" type="range" min="1" max="3" step="1" value="1" data-astro-cid-wpd4hfkb><small data-astro-cid-wpd4hfkb>num_examples_per_group</small></label></div><div class="batch-equation" data-astro-cid-wpd4hfkb>2 groups × 1 example = <strong data-astro-cid-wpd4hfkb>2 instances</strong></div><div class="task-buckets" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>Lift</h4><div class="seeds" data-astro-cid-wpd4hfkb><span data-seed="0-0" aria-label="Lift, seed 1" data-astro-cid-wpd4hfkb>1</span><span data-seed="0-1" aria-label="Lift, seed 2" data-astro-cid-wpd4hfkb>2</span><span data-seed="0-2" aria-label="Lift, seed 3" data-astro-cid-wpd4hfkb>3</span><span data-seed="0-3" aria-label="Lift, seed 4" data-astro-cid-wpd4hfkb>4</span><span data-seed="0-4" aria-label="Lift, seed 5" data-astro-cid-wpd4hfkb>5</span><span data-seed="0-5" aria-label="Lift, seed 6" data-astro-cid-wpd4hfkb>6</span><span data-seed="0-6" aria-label="Lift, seed 7" data-astro-cid-wpd4hfkb>7</span><span data-seed="0-7" aria-label="Lift, seed 8" data-astro-cid-wpd4hfkb>8</span></div></div><div data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>Place</h4><div class="seeds" data-astro-cid-wpd4hfkb><span data-seed="1-0" aria-label="Place, seed 1" data-astro-cid-wpd4hfkb>1</span><span data-seed="1-1" aria-label="Place, seed 2" data-astro-cid-wpd4hfkb>2</span><span data-seed="1-2" aria-label="Place, seed 3" data-astro-cid-wpd4hfkb>3</span></div></div><div data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>Stack</h4><div class="seeds" data-astro-cid-wpd4hfkb><span data-seed="2-0" aria-label="Stack, seed 1" data-astro-cid-wpd4hfkb>1</span><span data-seed="2-1" aria-label="Stack, seed 2" data-astro-cid-wpd4hfkb>2</span><span data-seed="2-2" aria-label="Stack, seed 3" data-astro-cid-wpd4hfkb>3</span></div></div></div><p class="sampler-result" role="status" data-astro-cid-wpd4hfkb>Draw a batch to see which task families and seeds are selected.</p><div class="batch-feedback" data-astro-cid-wpd4hfkb><div class="feedback-example-list" role="group" aria-label="Sampled feedback examples" data-astro-cid-wpd4hfkb></div><div class="feedback-payload" data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>What the mutation agent receives</h4><pre class="batch-payload" data-astro-cid-wpd4hfkb>Draw a batch to inspect per-instance feedback.</pre></div></div><p class="batch-cost" data-astro-cid-wpd4hfkb>Two parent examples and two paired child examples before validation, excluding additional debugging rollouts and cache reuse.</p><p class="takeaway" data-astro-cid-wpd4hfkb>Parent and child face <strong data-astro-cid-wpd4hfkb>the same sampled instances</strong>. The comparison is paired, even when the batch is tiny.</p></div> <details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Sampling and skip details</summary><p data-astro-cid-wpd4hfkb>HELIX’s standard epoch-shuffled sampler visits shuffled training examples. RHO’s stratified sampler shuffles within groups and interleaves task families, with configurable numbers of groups and examples per group. If too few groups exist, the implementation falls back to epoch-shuffled sampling. The canonical Robosuite configuration uses a minibatch of two.</p><p data-astro-cid-wpd4hfkb>Evaluate the parent and collect its traces before asking for a mutation. If every sampled score already reaches the configured perfect-score threshold, the perfect-batch rule can skip that mutation attempt. This skip decision applies to the sampled instances.</p></details> </section> <section id="learn-budget" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>↔</span><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>Search intuition</span><h3 data-astro-cid-wpd4hfkb>More generations and broader evaluation both take time.</h3></div></div><p data-astro-cid-wpd4hfkb>Generation count and minibatch size are independent settings. You can run many generations with a large minibatch; doing so requires more evaluation work and usually more wall-clock time.</p><p data-astro-cid-wpd4hfkb>Batch size also changes the agent’s attention. More groups expose different task families; more seeds reveal variation within a family. More examples can reveal regressions, but can also make the reflection prompt longer and the requested improvement less focused.</p> <div class="experiment budget" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>TWO WAYS THE WORK GROWS <span data-astro-cid-wpd4hfkb>Work illustration · no runtime estimate</span></div><p class="budget-linked" data-astro-cid-wpd4hfkb>Using your sampling settings: 2 groups × 1 example = 2 instances per batch.</p><div class="controls" data-astro-cid-wpd4hfkb><a href="#learn-sampling" data-astro-cid-wpd4hfkb>Change groups and examples ↑</a></div><div class="batch-settings" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Planned generations <output class="budget-total-value" data-astro-cid-wpd4hfkb>100</output><input type="range" min="10" max="300" step="10" value="100" class="budget-total" aria-label="Planned generations" data-astro-cid-wpd4hfkb></label></div><div class="work-paths" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><span class="tag rho" data-astro-cid-wpd4hfkb>Inside each mutation</span><h4 data-astro-cid-wpd4hfkb>A larger feedback prompt</h4><div class="prompt-records" aria-hidden="true" data-astro-cid-wpd4hfkb><i data-astro-cid-wpd4hfkb></i><i data-astro-cid-wpd4hfkb></i></div><p class="prompt-volume" data-astro-cid-wpd4hfkb>2 feedback records: scores, side information, and stdout.</p><p data-astro-cid-wpd4hfkb>More records mean more evidence to read. They can expose more issues, invite more edits and tests, and make an agent session longer. Trace length and problem difficulty matter too.</p></div><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>Outside each mutation</span><h4 data-astro-cid-wpd4hfkb>More paired evaluations</h4><div class="rollout-records" aria-hidden="true" data-astro-cid-wpd4hfkb><i data-astro-cid-wpd4hfkb></i><i data-astro-cid-wpd4hfkb></i><i data-astro-cid-wpd4hfkb></i><i data-astro-cid-wpd4hfkb></i></div><p class="rollout-volume" data-astro-cid-wpd4hfkb>2 parent + 2 child rollouts per generation.</p><p data-astro-cid-wpd4hfkb>Each additional example is evaluated for both parent and child. Debugging trials and validation add further work. Parallel workers can run some of these evaluations concurrently.</p></div></div><p class="work-summary" role="status" data-astro-cid-wpd4hfkb>100 planned generations, each with 2 feedback examples and 4 paired training rollouts: 400 paired rollouts before caching, skips, debugging, and validation.</p><p class="takeaway" data-astro-cid-wpd4hfkb>Generation count stays independent. You can choose both many generations and broad feedback; that generally demands more agent work and evaluation time. More evidence can also make an edit better informed. Actual duration also depends on rollout length, agent behavior, caching, and available parallelism.</p></div> </section> <section id="learn-mutation" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>03</span><div data-astro-cid-wpd4hfkb><span class="tag rho" data-astro-cid-wpd4hfkb>RHO · tool-enabled mutation + REaaS</span><h3 data-astro-cid-wpd4hfkb>One mutation is a development session.</h3></div></div><p data-astro-cid-wpd4hfkb>HELIX uses natural-language reflection on successes, failures, and execution traces to guide a <strong data-astro-cid-wpd4hfkb>tool-enabled coding agent</strong> working across the repository.</p><p data-astro-cid-wpd4hfkb>The agent can inspect files, edit modules, write temporary tests, execute candidate policies, read tracebacks, and revise again before submitting one child. Robot-environments-as-a-service (<strong data-astro-cid-wpd4hfkb>REaaS</strong>) provides the allowed environment calls. We use Robosuite, LIBERO, and RAI; the interface can expose other benchmarks.</p> <div class="experiment mutation" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>STEP INSIDE ONE MUTATION <span data-astro-cid-wpd4hfkb>Illustrative coordinate-frame bug</span></div><div class="controls" data-astro-cid-wpd4hfkb><button class="mutation-play primary" data-astro-cid-wpd4hfkb>Play session</button><button class="mutation-next" data-astro-cid-wpd4hfkb>Next action →</button><button class="mutation-reset" data-astro-cid-wpd4hfkb>Reset</button><span class="mutation-counter" data-astro-cid-wpd4hfkb>1 / 6</span></div><div class="session-track" role="group" aria-label="Mutation actions" data-astro-cid-wpd4hfkb><button data-phase="0" aria-pressed="true" data-astro-cid-wpd4hfkb>Inspect</button><button data-phase="1" data-astro-cid-wpd4hfkb>Edit</button><button data-phase="2" data-astro-cid-wpd4hfkb>Test</button><button data-phase="3" data-astro-cid-wpd4hfkb>Read feedback</button><button data-phase="4" data-astro-cid-wpd4hfkb>Revise</button><button data-phase="5" data-astro-cid-wpd4hfkb>Submit</button></div><div class="session-scene" data-astro-cid-wpd4hfkb><div class="session-files" data-astro-cid-wpd4hfkb><span data-module="perception" data-astro-cid-wpd4hfkb>perception.py</span><span data-module="motion" data-astro-cid-wpd4hfkb>motion.py</span><span data-module="verify" data-astro-cid-wpd4hfkb>verify.py</span><div class="agent-mark" aria-hidden="true" data-astro-cid-wpd4hfkb>↔</div><small data-astro-cid-wpd4hfkb>Tool-enabled coding agent</small></div><div class="session-terminal" data-astro-cid-wpd4hfkb><span class="terminal-label" data-astro-cid-wpd4hfkb>INSPECT</span><pre class="session-code" data-astro-cid-wpd4hfkb>grasp.pose.frame = "camera"
+motion.expected_frame = "world"
+# The interfaces disagree.</pre><p class="session-explanation" role="status" data-astro-cid-wpd4hfkb>The parent’s trace suggests that a camera-frame grasp was passed to a world-frame motion routine.</p></div></div><p class="takeaway" data-astro-cid-wpd4hfkb>Intermediate tool use helps the agent refine its proposal. The evaluator’s reward comparison determines acceptance.</p></div> <div class="two-channels" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>Selection signal</span><h4 data-astro-cid-wpd4hfkb>How well did it do?</h4><div class="big-score" data-astro-cid-wpd4hfkb>s<sub data-astro-cid-wpd4hfkb>τ</sub>(R)</div><p data-astro-cid-wpd4hfkb>The evaluator returns one scalar per instance: a <strong data-astro-cid-wpd4hfkb>shaped reward</strong> that credits progress, or <strong data-astro-cid-wpd4hfkb>binary task success</strong> (0 or 1). HELIX compares the summed scores on the paired minibatch to decide acceptance.</p></div><div data-astro-cid-wpd4hfkb><span class="tag rho" data-astro-cid-wpd4hfkb>Reflection signal</span><h4 data-astro-cid-wpd4hfkb>What should change?</h4><p data-astro-cid-wpd4hfkb>Execution traces, errors, stdout/stderr, visual-difference summaries, and optional judge diagnostics help explain behavior.</p></div></div> <div class="experiment diagnostic" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>SAME SCORE. DIFFERENT REPAIR. <span data-astro-cid-wpd4hfkb>Illustrative feedback</span></div><div class="controls" role="group" aria-label="Failure diagnosis" data-astro-cid-wpd4hfkb><button data-diagnosis="frame" aria-pressed="true" class="primary" data-astro-cid-wpd4hfkb>Wrong coordinate frame</button><button data-diagnosis="release" aria-pressed="false" data-astro-cid-wpd4hfkb>Gripper opens too early</button></div><div class="diagnostic-score" data-astro-cid-wpd4hfkb>Reward <strong data-astro-cid-wpd4hfkb>0.30</strong></div><p class="diagnostic-trace" data-astro-cid-wpd4hfkb>Trace: the commanded grasp pose is expressed in the camera frame, but motion expects world coordinates.</p><p class="diagnostic-edit" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Possible repair:</strong> compose the camera-to-world transform before planning motion.</p><p class="takeaway" data-astro-cid-wpd4hfkb>The scalar says how the rollout scored. Actionable Side Information (ASI) supplies evidence for what to change. Reflection uses that evidence to propose a targeted repair.</p></div> <details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>What goes into reflection?</summary><p data-astro-cid-wpd4hfkb>Instrumentation is part of the learning interface. A bare failure score hides where execution went wrong; a useful log can expose a failed precondition, a pose mismatch, or a premature release. Useful diagnostics distinguish plausible causes and suggest a testable next edit. Successful traces also matter because they show behavior worth preserving.</p><p data-astro-cid-wpd4hfkb>The mutation session receives the parent repository, its full evaluator output for the current batch, task instructions, and domain context. The prompt asks the agent to improve weaknesses while preserving strengths. Structured side information is supplied by the evaluator; available fields depend on the benchmark.</p><p data-astro-cid-wpd4hfkb>In the CaP-Bench setup, optional judge axes describe uncertainty management, contingency handling, strategic coherence, physical grounding, and adaptive exploration. These axes and visual-difference summaries guide the agent’s diagnosis. Acceptance uses the scalar environment reward. Timing and token-cost streams are withheld from the reflection prompt in the reported setup. Each session has a bounded tool/turn budget and ends by submitting a candidate snapshot.</p></details> </section> <section id="learn-gates" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>04</span><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>HELIX gate</span> <span class="tag rho" data-astro-cid-wpd4hfkb>RHO · optional staged validation</span><h3 data-astro-cid-wpd4hfkb>A promising edit must earn more evaluation.</h3></div></div><p data-astro-cid-wpd4hfkb>Run the child on the same training minibatch as its parent. The default gate requires a <strong data-astro-cid-wpd4hfkb>strict increase in total reward</strong>. An improvement on one instance may offset a regression on another. Some RHO experiments allow equality to admit more candidate diversity.</p> <div class="experiment gates" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>CHANGE THE CHILD’S SCORES <span data-astro-cid-wpd4hfkb>Illustrative rewards</span></div><div class="score-inputs" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>Parent</h4><p data-astro-cid-wpd4hfkb>Instance 1 <strong data-astro-cid-wpd4hfkb>0.30</strong> · Instance 2 <strong data-astro-cid-wpd4hfkb>0.70</strong></p><span class="sum parent-sum" data-astro-cid-wpd4hfkb>Total 1.00</span></div><div data-astro-cid-wpd4hfkb><h4 data-astro-cid-wpd4hfkb>Child</h4><label data-astro-cid-wpd4hfkb>Instance 1 <output class="score-one" data-astro-cid-wpd4hfkb>0.80</output><input aria-label="Child reward on instance 1" class="child-one" type="range" min="0" max="1" step=".05" value=".8" data-astro-cid-wpd4hfkb></label><label data-astro-cid-wpd4hfkb>Instance 2 <output class="score-two" data-astro-cid-wpd4hfkb>0.30</output><input aria-label="Child reward on instance 2" class="child-two" type="range" min="0" max="1" step=".05" value=".3" data-astro-cid-wpd4hfkb></label><span class="sum child-sum" data-astro-cid-wpd4hfkb>Total 1.10</span></div></div><div class="controls" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb><input type="checkbox" class="allow-equal" data-astro-cid-wpd4hfkb> Allow equal reward (≥)</label><label data-astro-cid-wpd4hfkb><input type="checkbox" class="use-stage" checked data-astro-cid-wpd4hfkb> Staged validation</label><label data-astro-cid-wpd4hfkb>Stage outcome <select class="stage-case" data-astro-cid-wpd4hfkb><option value="pass" data-astro-cid-wpd4hfkb>Improves: 1.35 vs 1.20</option><option value="fail" data-astro-cid-wpd4hfkb>Regresses: 0.90 vs 1.20</option><option value="tie" data-astro-cid-wpd4hfkb>Ties: 1.20 vs 1.20</option></select></label></div><div class="gate-track" data-astro-cid-wpd4hfkb><span data-gate="train" data-astro-cid-wpd4hfkb>Paired training batch</span><b data-astro-cid-wpd4hfkb>→</b><span data-gate="stage" data-astro-cid-wpd4hfkb>Validation subset</span><b data-astro-cid-wpd4hfkb>→</b><span data-gate="full" data-astro-cid-wpd4hfkb>Full validation</span></div><p class="gate-result" role="status" data-astro-cid-wpd4hfkb>The child passes both gates and proceeds to full validation. Frontier retention is a separate decision.</p><div class="equation" data-astro-cid-wpd4hfkb>Σ s<sub data-astro-cid-wpd4hfkb>τ</sub>(child) &gt; Σ s<sub data-astro-cid-wpd4hfkb>τ</sub>(parent), for τ ∈ B</div></div> <p data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Staged validation is RHO’s additional filter.</strong> Before paying for the full validation set, compare the child and parent on a smaller validation subset using the configured acceptance criterion. This gate is enabled in our LIBERO runs and disabled in the canonical Robosuite run.</p><details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Gate outcomes, cost, and stopping</summary><p data-astro-cid-wpd4hfkb>The parent remains available when a child is rejected. Passing the training gate (or both gates when staging is enabled) only promotes the child to full validation. Full per-instance scores determine frontier retention.</p><p data-astro-cid-wpd4hfkb>The current staged implementation uses a configured prefix of validation instance IDs and the parent’s stored scores on those same IDs. It applies the stage only when the needed parent scores exist. Previously evaluated instances can be reused through the evaluation cache; this reduces repeated evaluation work.</p><p data-astro-cid-wpd4hfkb>Search repeats until its configured budget or stopping condition is reached. An attempt can end in a failed mutation, a rejected proposal, a perfect-batch skip, or a retained candidate.</p></details> </section> <section id="learn-frontier" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>05</span><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>HELIX · coverage, pruning, and selection</span><h3 data-astro-cid-wpd4hfkb>Keep useful specialists available for the next mutation.</h3></div></div><p data-astro-cid-wpd4hfkb>The frontier itself is a design choice in HELIX. We use an <strong data-astro-cid-wpd4hfkb>instance frontier in Robosuite</strong> and an <strong data-astro-cid-wpd4hfkb>objective frontier in LIBERO</strong>. The first tracks the best score for each validation instance; the second tracks each evaluator-defined objective’s mean across validation instances. A lower-average specialist can remain a useful parent under either choice.</p> <div class="experiment frontier" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>BUILD A FRONTIER <span data-astro-cid-wpd4hfkb>Toy instance rewards / objective means · higher is better</span></div><div class="controls" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Frontier keys <select class="frontier-mode" data-astro-cid-wpd4hfkb><option value="instance" data-astro-cid-wpd4hfkb>Instance · Robosuite choice</option><option value="objective" data-astro-cid-wpd4hfkb>Objective · LIBERO choice</option></select></label><label data-astro-cid-wpd4hfkb>Add a candidate <select class="frontier-stage" data-astro-cid-wpd4hfkb><option value="2" data-astro-cid-wpd4hfkb>Start: specialists A + B</option><option value="3" data-astro-cid-wpd4hfkb>Add E: redundant coverage</option><option value="4" data-astro-cid-wpd4hfkb>Add C: a new instance best</option><option value="5" data-astro-cid-wpd4hfkb>Add D: combines all strengths</option></select></label><button class="sample-parent primary" data-astro-cid-wpd4hfkb>Sample next parent</button></div><div class="table-scroll" data-astro-cid-wpd4hfkb><table data-astro-cid-wpd4hfkb><caption data-astro-cid-wpd4hfkb>Validation rewards and parent-selection probabilities</caption><thead data-astro-cid-wpd4hfkb><tr data-astro-cid-wpd4hfkb><th scope="col" data-astro-cid-wpd4hfkb>Repository</th><th scope="col" data-key-header="0" data-astro-cid-wpd4hfkb>τ1</th><th scope="col" data-key-header="1" data-astro-cid-wpd4hfkb>τ2</th><th scope="col" data-key-header="2" data-astro-cid-wpd4hfkb>τ3</th><th scope="col" data-key-header="3" data-astro-cid-wpd4hfkb>τ4</th><th scope="col" data-astro-cid-wpd4hfkb>Scalar mean</th><th scope="col" data-astro-cid-wpd4hfkb>Parent chance</th></tr></thead><tbody data-astro-cid-wpd4hfkb><tr data-candidate="A" data-astro-cid-wpd4hfkb><th scope="row" data-astro-cid-wpd4hfkb>A<small data-astro-cid-wpd4hfkb>Lift specialist</small></th><td data-instance="0" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="1" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:20%" data-astro-cid-wpd4hfkb>0.20</span></td><td data-instance="2" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:80%" data-astro-cid-wpd4hfkb>0.80</span></td><td data-instance="3" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:30%" data-astro-cid-wpd4hfkb>0.30</span></td><td data-astro-cid-wpd4hfkb>0.550</td><td class="chance" data-astro-cid-wpd4hfkb>50%</td></tr><tr data-candidate="B" data-astro-cid-wpd4hfkb><th scope="row" data-astro-cid-wpd4hfkb>B<small data-astro-cid-wpd4hfkb>Place specialist</small></th><td data-instance="0" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:40%" data-astro-cid-wpd4hfkb>0.40</span></td><td data-instance="1" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="2" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:50%" data-astro-cid-wpd4hfkb>0.50</span></td><td data-instance="3" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:80%" data-astro-cid-wpd4hfkb>0.80</span></td><td data-astro-cid-wpd4hfkb>0.650</td><td class="chance" data-astro-cid-wpd4hfkb>50%</td></tr><tr data-candidate="E" hidden data-astro-cid-wpd4hfkb><th scope="row" data-astro-cid-wpd4hfkb>E<small data-astro-cid-wpd4hfkb>Redundant coverage</small></th><td data-instance="0" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="1" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="2" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:60%" data-astro-cid-wpd4hfkb>0.60</span></td><td data-instance="3" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:70%" data-astro-cid-wpd4hfkb>0.70</span></td><td data-astro-cid-wpd4hfkb>0.775</td><td class="chance" data-astro-cid-wpd4hfkb>0%</td></tr><tr data-candidate="C" hidden data-astro-cid-wpd4hfkb><th scope="row" data-astro-cid-wpd4hfkb>C<small data-astro-cid-wpd4hfkb>New best on instance 1</small></th><td data-instance="0" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:95%" data-astro-cid-wpd4hfkb>0.95</span></td><td data-instance="1" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="2" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:70%" data-astro-cid-wpd4hfkb>0.70</span></td><td data-instance="3" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:70%" data-astro-cid-wpd4hfkb>0.70</span></td><td data-astro-cid-wpd4hfkb>0.813</td><td class="chance" data-astro-cid-wpd4hfkb>0%</td></tr><tr data-candidate="D" hidden data-astro-cid-wpd4hfkb><th scope="row" data-astro-cid-wpd4hfkb>D<small data-astro-cid-wpd4hfkb>Combines the strengths</small></th><td data-instance="0" data-astro-cid-wpd4hfkb><span class="reward-cell" style="--reward:95%" data-astro-cid-wpd4hfkb>0.95</span></td><td data-instance="1" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:90%" data-astro-cid-wpd4hfkb>0.90</span></td><td data-instance="2" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:80%" data-astro-cid-wpd4hfkb>0.80</span></td><td data-instance="3" data-astro-cid-wpd4hfkb><span class="reward-cell best" style="--reward:80%" data-astro-cid-wpd4hfkb>0.80</span></td><td data-astro-cid-wpd4hfkb>0.863</td><td class="chance" data-astro-cid-wpd4hfkb>0%</td></tr></tbody></table></div><div class="frontier-tickets" aria-label="Parent sampling weights" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>A · 2 tickets</span><span data-astro-cid-wpd4hfkb>B · 2 tickets</span></div><p class="frontier-result" role="status" data-astro-cid-wpd4hfkb>A is best on instances 1 and 3; B is best on 2 and 4. Both survive, with equal selection probability.</p><p class="sample-result" role="status" data-astro-cid-wpd4hfkb>Sample a parent: each surviving best-key occurrence contributes one ticket.</p><p class="takeaway" data-astro-cid-wpd4hfkb>If search ended here, deploy <strong class="deploy-choice" data-astro-cid-wpd4hfkb>B</strong>: it has the highest mean among the surviving candidates. Sampling the next parent and choosing the final deployment are different decisions.</p></div> <p data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Frontier size changes the search.</strong> Many instance keys can preserve many local specialists; a few objective means can collapse those distinctions into a much smaller set of parents. This changes the branches available for later mutation.</p> <div class="experiment breadth" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>HOW WIDE IS THE SEARCH? <span data-astro-cid-wpd4hfkb>Same 12 toy repositories · same underlying evaluations</span></div><div class="batch-settings" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Validation instances <output class="instance-count" data-astro-cid-wpd4hfkb>12</output><input type="range" min="4" max="24" step="1" value="12" class="breadth-instances" aria-label="Validation instance count" data-astro-cid-wpd4hfkb></label><label data-astro-cid-wpd4hfkb>Evaluator objectives <output class="objective-count" data-astro-cid-wpd4hfkb>2</output><input type="range" min="1" max="4" step="1" value="2" class="breadth-objectives" aria-label="Evaluator objective count" data-astro-cid-wpd4hfkb></label></div><div class="breadth-comparison" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>Instance frontier</span><strong class="instance-size" data-astro-cid-wpd4hfkb>12</strong><small class="instance-keys" data-astro-cid-wpd4hfkb>12 keys</small><div class="breadth-bar" data-astro-cid-wpd4hfkb><i class="instance-bar" style="width:100%" data-astro-cid-wpd4hfkb></i></div></div><div data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>Objective frontier</span><strong class="objective-size" data-astro-cid-wpd4hfkb>2</strong><small class="objective-keys" data-astro-cid-wpd4hfkb>2 keys</small><div class="breadth-bar" data-astro-cid-wpd4hfkb><i class="objective-bar" style="width:16.67%" data-astro-cid-wpd4hfkb></i></div></div></div><div class="controls" data-astro-cid-wpd4hfkb><label data-astro-cid-wpd4hfkb>Inspect parents in <select class="breadth-mode" data-astro-cid-wpd4hfkb><option value="instance" data-astro-cid-wpd4hfkb>Instance frontier</option><option value="objective" data-astro-cid-wpd4hfkb>Objective frontier</option></select></label></div><div class="parent-grid" data-astro-cid-wpd4hfkb><div data-parent-index="0" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R1</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="1" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R2</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="2" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R3</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="3" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R4</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="4" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R5</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="5" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R6</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="6" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R7</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="7" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R8</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="8" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R9</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="9" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R10</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="10" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R11</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div><div data-parent-index="11" data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>R12</strong><span data-astro-cid-wpd4hfkb>8.3%</span></div></div><p class="breadth-result" role="status" data-astro-cid-wpd4hfkb>12 instance specialists survive, versus 2 objective specialists in this constructed example.</p><details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Inspect the underlying scores</summary><div class="table-scroll" data-astro-cid-wpd4hfkb><table data-astro-cid-wpd4hfkb><caption data-astro-cid-wpd4hfkb>Scalar mean and per-objective means for the toy pool</caption><thead class="breadth-data-head" data-astro-cid-wpd4hfkb></thead><tbody class="breadth-data-body" data-astro-cid-wpd4hfkb></tbody></table></div></details><p class="takeaway" data-astro-cid-wpd4hfkb>These values come from the constructed example. Frontier size depends on the candidate scores, ties, and key definitions. The candidate archive and the active parent frontier are also different sizes. A larger frontier spreads parent-selection probability across more alternatives; whether that breadth helps depends on their usefulness and the remaining search budget.</p></div> <details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Exact coverage rule and ties</summary><p data-astro-cid-wpd4hfkb>For each active frontier key, maintain the set of candidates achieving its best observed score. An instance key refers to one validation example. An objective key refers to one evaluator-provided objective aggregated as a mean over validation examples. The four objective labels are chosen for this teaching example. Collect candidates appearing in any best set. Examine them in ascending aggregate-score order. Remove a candidate if every best key it covers is also covered by another remaining candidate; restart the scan after each removal until no further removal is possible.</p><p data-astro-cid-wpd4hfkb>Coverage can be redundant across <em data-astro-cid-wpd4hfkb>several</em> other candidates. A candidate tied for a best score can be removed when the remaining candidates cover all its best keys.</p><div class="equation" data-astro-cid-wpd4hfkb>P(parent = R) = c(R) / Σ c(Q)</div><p data-astro-cid-wpd4hfkb>c(R) counts R’s appearances in the cleaned best-key sets. Coverage counts best keys. A shaped reward below 1 can still be the current best. The interactive table uses the same iterative coverage rule, with synthetic scores. Its scalar mean remains separate from the frontier-key values. The frontier type controls retention and parent sampling. The scalar minibatch gate uses its own acceptance criterion. HELIX also supports hybrid and cartesian key spaces; the two modes shown here are the choices used in these RHO experiments.</p></details> </section> <section id="learn-isolation" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>06</span><div data-astro-cid-wpd4hfkb><span class="tag rho" data-astro-cid-wpd4hfkb>RHO · isolation boundary</span><h3 data-astro-cid-wpd4hfkb>Control access to tools and evaluator files.</h3></div></div><p data-astro-cid-wpd4hfkb>A file-editing agent can improve the policy or tamper with what measures it. RHO separates the mutable workspace, the evaluator, and robot services. A sidecar proxies whitelisted REaaS calls; evaluator-owned files stay outside the agent’s workspace, and integrity checks reject modifications to protected artifacts.</p><div class="experiment boundary" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>TRY THE BOUNDARY <span data-astro-cid-wpd4hfkb>Interactive explanation; no service calls are made</span></div><div class="boundary-scene" data-astro-cid-wpd4hfkb><div data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Agent workspace</strong><span data-astro-cid-wpd4hfkb>Policy files · temporary tests</span></div><b class="boundary-arrow" data-astro-cid-wpd4hfkb>→</b><div data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Sidecar</strong><span data-astro-cid-wpd4hfkb>Whitelisted interface</span></div><b data-astro-cid-wpd4hfkb>→</b><div data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>Robot services</strong><span data-astro-cid-wpd4hfkb>Environment rollouts</span></div></div><div class="controls" data-astro-cid-wpd4hfkb><button data-access="run" class="primary" data-astro-cid-wpd4hfkb>Run a candidate</button><button data-access="read" data-astro-cid-wpd4hfkb>Read evaluator source</button><button data-access="write" data-astro-cid-wpd4hfkb>Change protected files</button></div><p class="boundary-result" role="status" data-astro-cid-wpd4hfkb>Choose an action to see how the boundary treats it.</p></div><details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Tools available during mutation and deployment</summary><p data-astro-cid-wpd4hfkb>In the CaP-Bench experiments, mutation uses M4-style debugging: the coding agent may run tests, inspect logs, and query visual-difference feedback. Scoring executes the child through the stricter S4 surface: no deployment-time visual-difference feedback, multi-turn corrective editing, or LLM code-generation calls. Evaluator side information is post-hoc, for future mutations.</p><p data-astro-cid-wpd4hfkb>The boundary excludes evaluator source, benchmark splits, judge prompts, and benchmark metadata from the mutator workspace.</p></details></section> <section id="learn-deploy" data-astro-cid-wpd4hfkb><div class="chapter" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>07</span><div data-astro-cid-wpd4hfkb><span class="tag" data-astro-cid-wpd4hfkb>Selection</span> <span class="tag rho" data-astro-cid-wpd4hfkb>RHO · deployment</span><h3 data-astro-cid-wpd4hfkb>Many search branches. One evolved RaP.</h3></div></div><p data-astro-cid-wpd4hfkb>At the end of the main frontier-based search, select the surviving repository with the highest mean validation reward, with validation coverage breaking ties. That repository is the deployable artifact.</p><div class="equation" data-astro-cid-wpd4hfkb>R* = arg max<sub data-astro-cid-wpd4hfkb>R ∈ F<sub data-astro-cid-wpd4hfkb>T</sub></sub> (1 / N) Σ<sub data-astro-cid-wpd4hfkb>i=1…N</sub> s<sub data-astro-cid-wpd4hfkb>i</sub>(R)</div><div class="experiment deployment" data-astro-cid-wpd4hfkb><div class="experiment-label" data-astro-cid-wpd4hfkb>WHAT REMAINS AT DEPLOYMENT?</div><div class="controls" role="group" aria-label="Deployment setting" data-astro-cid-wpd4hfkb><button data-runtime="cap" aria-pressed="true" class="primary" data-astro-cid-wpd4hfkb>CaP-Bench controller</button><button data-runtime="rai" aria-pressed="false" data-astro-cid-wpd4hfkb>RAI agent harness</button></div><div class="runtime-path" data-astro-cid-wpd4hfkb><span data-astro-cid-wpd4hfkb>Selected RaP</span><b data-astro-cid-wpd4hfkb>→</b><span class="runtime-mid" data-astro-cid-wpd4hfkb>Python controller</span><b data-astro-cid-wpd4hfkb>→</b><span data-astro-cid-wpd4hfkb>Robot tools</span></div><p class="runtime-description" role="status" data-astro-cid-wpd4hfkb>The evolved repository runs as a controller. Its source stays fixed during the scored rollout, and it can call learned perception services through the documented interface.</p></div><p data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>We deploy the RHO-evolved RaP on real robots and demonstrate sim-to-real transfer across robot embodiments and to unseen objects.</strong> The two-robot animation above illustrates this distinction; the hardware experiments provide the evidence.</p><details data-astro-cid-wpd4hfkb><summary data-astro-cid-wpd4hfkb>Experiment-specific selection and what is held out</summary><p data-astro-cid-wpd4hfkb>Improving one demonstration and learning a reusable policy are different goals. Search feedback helps construct the artifact; evaluation on unseen conditions asks whether that artifact generalizes.</p><p data-astro-cid-wpd4hfkb>The mean-validation frontier rule describes the main search protocol. The RAI portability experiments use a separate best-by-train selection after ten generations, followed by evaluation on a held-out test split. RHO evolves RAI’s prompts and tool-edit module within its existing ROS 2 connector, deployment loop, and inference driver.</p><p data-astro-cid-wpd4hfkb>Validation guides search; held-out evaluation measures generalization. In the canonical Robosuite configuration, training and validation use the same 70 task/trial IDs; external evaluation spans 700 trials, including 630 not seen during search.</p></details></section> <div class="lesson-end" data-astro-cid-wpd4hfkb><span class="eyebrow" data-astro-cid-wpd4hfkb>PUT IT TOGETHER</span><h3 data-astro-cid-wpd4hfkb>The complete search loop</h3><ol data-astro-cid-wpd4hfkb><li data-astro-cid-wpd4hfkb>Evaluate the seed on validation instances and initialize the configured frontier.</li><li data-astro-cid-wpd4hfkb>Sample a frontier parent, then a training minibatch; evaluate the parent and collect diagnostics.</li><li data-astro-cid-wpd4hfkb>Skip a perfect minibatch when configured. Otherwise, reflect and run a bounded tool-enabled repository mutation.</li><li data-astro-cid-wpd4hfkb>Reject edits that violate integrity. Score the child on the same batch and apply the configured reward gate.</li><li data-astro-cid-wpd4hfkb>If enabled, apply the staged validation gate. Evaluate promoted children on the full validation set.</li><li data-astro-cid-wpd4hfkb>Update the configured best-key sets, prune redundant coverage, and repeat until the budget ends.</li><li data-astro-cid-wpd4hfkb>Select one repository for deployment using the experiment’s selection protocol.</li></ol><p data-astro-cid-wpd4hfkb><strong data-astro-cid-wpd4hfkb>HELIX performs reflective evolution, paired comparisons, and coverage-based selection with configurable frontier keys. RHO expands the search artifact, the mutation process, the robot interface, the isolation boundary, and the training/validation schedule.</strong></p><p class="source-note" data-astro-cid-wpd4hfkb>Examples in this lesson are illustrative. Configuration notes distinguish the experiments in the paper. Expand each section for precise rules and assumptions.</p></div> <script type="application/json" class="file-data">[["main.py","Route the instruction","The public entry point connects a task instruction to reusable behavior."],["perception.py","Ground the scene","Wrap learned perception and convert observations into object poses."],["motion.py","Coordinate the action","Compose grasping, motion primitives, verification, and retries."],["prompts.md","Shape an agent’s behavior","When an LLM remains in the deployment loop, its prompts and tool interfaces can be part of the evolved repository."]]</script> </rho-method>  
+<h2 id="results"><a href="#results">Results</a></h2>
+
+<h2 id="demos"><a href="#demos">Demos</a></h2>
+
+<h2 id="hardware"><a href="#hardware">Hardware</a></h2>
+
+ </main> </section> <footer class="footer"> <div class="footer-inner">   <section class="reuse-block"> <p class="footer-heading" role="heading" aria-level="2">Reuse</p> <p>Page built with the <a href="https://huggingface.co/spaces/tfrere/research-article-template" target="_blank" rel="noopener noreferrer">Research Article Template</a>, CC-BY 4.0.
+</p> </section> <section class="references-block">  </section> <div class="template-credit"> <p>
+Made with ❤️ with <a href="https://huggingface.co/spaces/tfrere/research-article-template" target="_blank" rel="noopener noreferrer">research article template</a> </p> </div> </div> </footer> <script>
+  (() => {
+    const getFooter = () =>
+      document.currentScript?.closest("footer") ||
+      document.querySelector("footer.footer");
+    const footer = getFooter();
+    if (!footer) return;
+    const target = footer.querySelector(".references-block");
+    if (!target) return;
+
+    const contentRoot =
+      document.querySelector("section.content-grid main") ||
+      document.querySelector("main") ||
+      document.body;
+
+    const ensureHeading = (text) => {
+      const exists = Array.from(target.children).some(
+        (c) =>
+          c.classList.contains("footer-heading") &&
+          c.textContent.trim().toLowerCase() === text.toLowerCase(),
+      );
+      if (!exists) {
+        const h = document.createElement("p");
+        h.className = "footer-heading";
+        h.setAttribute("role", "heading");
+        h.setAttribute("aria-level", "2");
+        h.textContent = text;
+        target.appendChild(h);
+      }
+    };
+
+    const moveIntoFooter = (element, headingText) => {
+      if (!element) return false;
+
+      // Remove an eventual heading already included inside the block (avoid duplicates)
+      const firstHeading = element.querySelector(
+        ":scope > h1, :scope > h2, :scope > h3, :scope > .footer-heading",
+      );
+      if (firstHeading) {
+        const txt = (firstHeading.textContent || "").trim().toLowerCase();
+        const targetTxt = headingText.trim().toLowerCase();
+        if (
+          txt === targetTxt ||
+          txt.includes("reference") ||
+          txt.includes("bibliograph")
+        ) {
+          firstHeading.remove();
+        }
+      }
+
+      // Move footnote backref links inside paragraphs BEFORE moving element
+      if (element.classList && element.classList.contains("footnotes")) {
+        const footnoteItems = element.querySelectorAll("li");
+        footnoteItems.forEach((item) => {
+          const backrefContainer = item.querySelector("small.backrefs");
+          const lastP = item.querySelector("p:last-of-type");
+          if (backrefContainer && lastP && !lastP.contains(backrefContainer)) {
+            lastP.appendChild(document.createTextNode(" "));
+            lastP.appendChild(backrefContainer);
+          }
+        });
+      }
+
+      ensureHeading(headingText);
+
+      // Move element directly - this preserves KaTeX DOM structure and inline styles
+      // KaTeX is already rendered at build-time, so we just need to preserve the HTML
+      target.appendChild(element);
+
+      return true;
+    };
+    const run = () => {
+      // Prevent multiple runs
+      if (footer.dataset.processed === "true") return false;
+
+      const findAllOutsideFooter = (selectors) => {
+        // Find ALL matching elements outside the footer (not just the first)
+        const results = [];
+        const searchRoots = [contentRoot, document.body].filter(Boolean);
+
+        for (const root of searchRoots) {
+          for (const sel of selectors) {
+            const elements = root.querySelectorAll(sel);
+            elements.forEach((el) => {
+              if (el && !footer.contains(el) && !results.includes(el)) {
+                results.push(el);
+              }
+            });
+          }
+        }
+        return results;
+      };
+
+      const findFirstOutsideFooter = (selectors) => {
+        const all = findAllOutsideFooter(selectors);
+        return all.length > 0 ? all[0] : null;
+      };
+
+      // Move ALL references from content to footer (handles duplicate bibliography issue)
+      const allRefsEls = findAllOutsideFooter([
+        "#bibliography-references-list",
+        "[data-bibliography-block]",
+        "#references",
+        "#refs",
+        ".references:not(ol.references)", // Avoid selecting normalized <ol> inside the container
+        ".bibliography",
+      ]);
+
+      // Try multiple selectors for footnotes
+      const footnotesEl = findFirstOutsideFooter([
+        "[data-built-footnotes]",
+        ".footnotes",
+        "section.footnotes",
+        "div.footnotes",
+      ]);
+
+      // Move all reference blocks found outside the footer
+      let movedRefs = false;
+      allRefsEls.forEach((el) => {
+        if (moveIntoFooter(el, "References")) {
+          movedRefs = true;
+        }
+      });
+
+      const movedNotes = moveIntoFooter(footnotesEl, "Footnotes");
+
+      if (movedRefs || movedNotes) {
+        footer.dataset.processed = "true";
+      }
+
+      return movedRefs || movedNotes;
+    };
+
+    // Try multiple times to catch footnotes at different stages
+    const attemptMove = () => {
+      run();
+    };
+
+    // Try immediately
+    attemptMove();
+
+    // Try on DOMContentLoaded
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", attemptMove, {
+        once: true,
+      });
+    }
+
+    // Try on window load
+    window.addEventListener(
+      "load",
+      () => {
+        setTimeout(attemptMove, 100);
+      },
+      { once: true },
+    );
+
+    // Final attempt after a short delay
+    setTimeout(attemptMove, 300);
+
+    // Resize on window changes (e.g., fonts, layout)
+    // No textarea auto-resize needed for <pre> blocks
+  })();
+</script>    </body> </html>

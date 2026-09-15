@@ -1,0 +1,175 @@
+---
+const steps = [
+  ['Sample', 'Start from a repository', 'RHO samples a candidate repository from the Pareto frontier for the coding agent to improve.'],
+  ['Edit', 'Improve the robotics harness', 'The tool-enabled coding agent edits the repository: code, prompts, and tools can all be part of the harness.'],
+  ['Evaluate', 'Run trials in REaaS', 'Evaluate the candidate in any benchmark exposed through REaaS. In this paper, we use Robosuite, LIBERO, and RAI. Trials produce scores and execution traces.'],
+  ['Feedback', 'Turn execution into feedback', 'Scores and execution traces return to the coding agent, informing the next revision.'],
+  ['Retain', 'Keep the Pareto-optimal candidates', 'RHO retains Pareto-optimal candidates and samples again, repeating the optimization loop.'],
+  ['Deploy', 'Sim-to-real transfer of the evolved RaP', 'We deploy the RHO-evolved Repository-as-Policy (RaP) on real robots and demonstrate sim-to-real transfer across robot embodiments and to unseen objects.'],
+];
+---
+<rho-walkthrough aria-label="How Robotics Harness Optimization works">
+  <div class="walk-stage">
+    <img src="/rho-figure.webp" width="2400" height="920" fetchpriority="high" alt="RHO: a coding agent samples and edits repository candidates, evaluates them in Robosuite, LIBERO and RAI, uses scores and execution traces, retains Pareto-optimal candidates, and deploys a selected Repository-as-Policy on robots." />
+
+    <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><mask id="rho-base-cutouts" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="white"/><rect x=".01" y=".27826" width=".19833" height=".44348" fill="black"/><rect x=".26667" y=".08478" width=".0825" height=".26304" fill="black"/><rect x=".23167" y=".54783" width=".0825" height=".16957" fill="black"/><rect x=".32083" y=".54783" width=".0825" height=".16957" fill="black"/><rect x=".41" y=".54783" width=".0825" height=".16957" fill="black"/><rect x=".5325" y=".28261" width=".12333" height=".40652" fill="black"/><rect x=".74333" y=".06522" width=".2525" height=".8" fill="black"/></mask></defs></svg>
+    <svg class="walk-parts" viewBox="0 0 1200 460" aria-hidden="true">
+      <g class="part part-repos"><svg x="12" y="128" width="238" height="204" overflow="hidden"><image href="/rho-figure.webp" x="-12" y="-128" width="1200" height="460" /></svg></g>
+      <g class="part part-agent"><svg x="320" y="39" width="99" height="121" overflow="hidden"><image href="/rho-figure.webp" x="-320" y="-39" width="1200" height="460" /></svg></g>
+      <g class="part part-bench bench-one"><svg x="278" y="252" width="99" height="78" overflow="hidden"><image href="/rho-figure.webp" x="-278" y="-252" width="1200" height="460" /></svg></g>
+      <g class="part part-bench bench-two"><svg x="385" y="252" width="99" height="78" overflow="hidden"><image href="/rho-figure.webp" x="-385" y="-252" width="1200" height="460" /></svg></g>
+      <g class="part part-bench bench-three"><svg x="492" y="252" width="99" height="78" overflow="hidden"><image href="/rho-figure.webp" x="-492" y="-252" width="1200" height="460" /></svg></g>
+      <g class="part part-policy"><svg x="639" y="130" width="148" height="187" overflow="hidden"><image href="/rho-figure.webp" x="-639" y="-130" width="1200" height="460" /></svg></g>
+      <g class="part part-robot"><svg x="892" y="30" width="303" height="368" overflow="hidden"><image href="/rho-figure.webp" x="-892" y="-30" width="1200" height="460" /></svg></g>
+      <g class="travelling-repo"><rect width="27" height="33" rx="3" fill="#fff" stroke="#137c82" stroke-width="1.5"/><path d="M5 9h16M5 14h12M5 19h16M5 24h8" stroke="#137c82" stroke-width="1.5"/></g>
+      <g class="agent-rings" fill="none" stroke="#137c82"><circle cx="369" cy="111" r="23"/><circle cx="369" cy="111" r="32"/></g>
+      <g class="trial-meters" fill="#137c82"><rect x="278" y="326" width="99" height="4"/><rect x="385" y="326" width="99" height="4"/><rect x="492" y="326" width="99" height="4"/></g>
+    </svg>
+    <svg class="walk-overlay" viewBox="0 0 1200 460" aria-hidden="true">
+      <defs><mask id="rho-focus-mask"><rect width="1200" height="460" fill="white"/><rect class="focus-window" x="0" y="0" width="1200" height="460" rx="22" fill="black"/></mask></defs>
+      <rect width="1200" height="460" fill="white" opacity=".6" mask="url(#rho-focus-mask)" />
+      <path class="walk-flow" d="M215 120 C240 77 282 79 316 86" />
+      <circle class="walk-packet" r="4" fill="#137c82" />
+    </svg>
+  </div>
+  <div class="kinova-stage" hidden>
+    <div class="kinova-heading"><strong>Kinova Gen3 + Franka</strong><span>Illustrative animation · drag to orbit</span></div>
+    <iframe title="Franka and Kinova Gen3 articulated motion: illustrative animation" data-src="/kinova/index.html?initialCameraPosition=0,-2.6,1.3&amp;initialCameraLookAt=0,0,0.45&amp;initialCameraUp=0,0,1&amp;initialCameraFov=0.55" loading="lazy" referrerpolicy="no-referrer"></iframe>
+  </div>
+  <div class="walk-controls" hidden>
+    <div class="walk-toolbar"><span class="walk-eyebrow">THE RHO LOOP</span><div class="walk-actions"><button type="button" class="play" aria-label="Play walkthrough">Play walkthrough <span aria-hidden="true">▷</span></button><button type="button" class="overview" aria-pressed="true">Full figure</button></div></div>
+    <div class="walk-steps" role="group" aria-label="Walkthrough steps">
+      {steps.map(([label], i) => <button type="button" data-step={i} aria-pressed="false"><span class="step-number">{String(i+1).padStart(2,'0')}</span><span>{label}</span><i aria-hidden="true" /></button>)}
+    </div>
+    <div class="walk-description"><span class="walk-counter" aria-hidden="true">RHO</span><div><h2>From coding agent to robot policy</h2><p>Follow the loop, or choose a step to explore how repositories become executable robot policies.</p></div></div>
+    <span class="walk-status" role="status" aria-live="polite"></span>
+  </div>
+  <script type="application/json" class="walk-data" set:html={JSON.stringify(steps)} />
+</rho-walkthrough>
+<style>
+  rho-walkthrough{display:block;max-width:1200px;margin:24px auto 8px;text-align:left;color:#25323b;--walk-teal:#137c82}
+  .kinova-stage{background:#f9fbfa;color:#25323b}.kinova-heading{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;font:13px/1.4 system-ui,sans-serif}.kinova-heading span{color:#617478}.kinova-stage iframe{display:block;width:100%;height:clamp(220px,40vw,390px);border:0}.kinova-stage[hidden],.walk-stage[hidden]{display:none!important}
+  .walk-stage{position:relative;background:white;isolation:isolate;border-radius:6px;overflow:hidden}
+  .walk-stage img{display:block;width:100%;height:auto;margin:0;max-width:none}
+  .walk-stage>img{mask:url(#rho-base-cutouts)}
+  .walk-parts{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+  .part{transform-box:fill-box;transform-origin:center;animation:none}
+  .part-robot{transform-origin:60% 95%}
+  .travelling-repo,.agent-rings,.trial-meters{opacity:0}
+  rho-walkthrough[data-playing][data-step="0"] .part-repos{animation:repo-lift 2.6s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="0"] .travelling-repo{animation:sample-file 2.6s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="1"] .part-agent,rho-walkthrough[data-playing][data-step="3"] .part-agent{animation:agent-think 2s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="1"] .agent-rings,rho-walkthrough[data-playing][data-step="3"] .agent-rings{animation:rings 2s ease-out infinite;transform-origin:369px 111px}
+  rho-walkthrough[data-playing][data-step="2"] .part-bench{animation:trial-lift 1.8s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="2"] .bench-two{animation-delay:.3s}
+  rho-walkthrough[data-playing][data-step="2"] .bench-three{animation-delay:.6s}
+  rho-walkthrough[data-playing][data-step="2"] .trial-meters{opacity:1}
+  .trial-meters rect{transform-box:fill-box;transform-origin:left;animation:trial-meter 1.8s ease-in-out infinite}
+  .trial-meters rect:nth-child(2){animation-delay:.3s}.trial-meters rect:nth-child(3){animation-delay:.6s}
+  rho-walkthrough[data-playing][data-step="4"] .part-repos{animation:retain-file 2.6s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="4"] .travelling-repo{animation:return-file 2.6s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="5"] .part-policy{animation:policy-forward 2.6s ease-in-out infinite}
+  rho-walkthrough[data-playing][data-step="5"] .part-robot{animation:robot-ready 3s ease-in-out infinite}
+  @keyframes repo-lift{0%,100%{transform:translateY(0)}40%,60%{transform:translateY(-6px)}}
+  @keyframes sample-file{0%{opacity:0;transform:translate(220px,139px) rotate(-8deg)}15%{opacity:1}80%{opacity:1;transform:translate(315px,76px) rotate(5deg)}100%{opacity:0;transform:translate(330px,88px) scale(.7)}}
+  @keyframes agent-think{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.045) rotate(3deg)}}
+  @keyframes rings{0%{opacity:0;transform:scale(.7)}25%{opacity:.5}100%{opacity:0;transform:scale(1.5)}}
+  @keyframes trial-lift{0%,100%{transform:translateY(0)}45%{transform:translateY(-7px)}}
+  @keyframes trial-meter{0%{transform:scaleX(0)}80%,100%{transform:scaleX(1)}}
+  @keyframes retain-file{0%,100%{transform:translateY(0)}70%{transform:translateY(-4px)}}
+  @keyframes return-file{0%{opacity:0;transform:translate(266px,391px) scale(.7)}15%{opacity:1}80%{opacity:1;transform:translate(221px,321px) scale(.9)}100%{opacity:0;transform:translate(201px,279px)}}
+  @keyframes policy-forward{0%,100%{transform:translateX(0)}50%{transform:translateX(12px)}}
+  @keyframes robot-ready{0%,100%{transform:rotate(0)}50%{transform:rotate(-1.5deg)}}
+  .walk-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .45s}
+  rho-walkthrough[data-active] .walk-overlay{opacity:1}
+  .walk-flow{fill:none;stroke:var(--walk-teal);stroke-width:2.8;stroke-linecap:round;stroke-dasharray:7 7;animation:flow 1.2s linear infinite}
+  .walk-packet{filter:drop-shadow(0 0 5px #fff)}
+  rho-walkthrough:not([data-playing]) .walk-flow{animation-play-state:paused}
+  .walk-controls{padding:20px 22px 10px;background:var(--color-background, #fff);color:var(--color-text,#25323b)}
+  .walk-toolbar,.walk-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .walk-eyebrow{font:600 11px/1.5 system-ui,sans-serif;letter-spacing:.15em;color:#567375}
+  button{font:500 13px/1.3 system-ui,sans-serif;cursor:pointer;color:inherit;background:none;border:0;border-radius:5px;padding:9px 12px;min-height:38px;transition:background .2s}
+  button:hover{background:#137c8210}button:focus-visible{outline:2px solid #137c82;outline-offset:3px}
+  .play{color:#137c82;border:1px solid #137c8250}.overview{color:#63757a}.overview[aria-pressed=true]{background:#137c8210}
+  .walk-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:16px 0 20px}
+  .walk-steps button{position:relative;display:flex;gap:8px;align-items:center;padding:12px 8px 17px;border-radius:0;text-align:left;overflow:hidden}
+  .step-number{font-size:10px;letter-spacing:.08em;opacity:.55}
+  .walk-steps button:after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#dce7e6}
+  .walk-steps button[aria-pressed=true]{color:#137c82;font-weight:700}
+  .walk-steps button[aria-pressed=true]:after{background:#137c82}
+  .walk-steps i{position:absolute;bottom:0;left:0;height:3px;background:#137c82;z-index:1;width:0}
+  .walk-description{display:flex;align-items:flex-start;gap:22px;min-height:104px;max-width:840px;margin:auto}
+  .walk-counter{font:500 28px/1.5 system-ui,sans-serif;color:#137c82;min-width:65px;letter-spacing:-.04em}
+  .walk-description h2{font:600 20px/1.4 system-ui,sans-serif;margin:0 0 6px;letter-spacing:-.025em;color:inherit;border:0;padding:0}
+  .walk-description p{font:400 15px/1.65 system-ui,sans-serif;margin:0;color:inherit;opacity:.8}
+  .walk-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  @keyframes flow{to{stroke-dashoffset:-28}}
+  @media(max-width:600px){rho-walkthrough{margin-top:14px}.walk-controls{padding:12px 4px}.walk-toolbar{gap:6px}.walk-eyebrow{font-size:9px}.walk-actions{gap:2px}button{font-size:12px;padding:8px}.walk-steps{grid-template-columns:repeat(3,1fr);gap:4px;margin:12px 0 18px}.walk-description{gap:12px;min-height:155px}.walk-counter{font-size:23px;min-width:42px}.walk-description h2{font-size:18px}.walk-description p{font-size:14px}}
+  @media(prefers-reduced-motion:reduce){.walk-overlay,button{transition:none}.walk-flow,.part,.travelling-repo,.agent-rings,.trial-meters rect{animation:none!important}.travelling-repo,.agent-rings,.trial-meters{display:none}}
+  @media print{.walk-controls{display:none!important}.walk-overlay{display:none}}
+</style>
+<script>
+class RhoWalkthrough extends HTMLElement {
+  connectedCallback() {
+    if(this.dataset.ready)return;this.dataset.ready='true';
+    const q=(s:string)=>this.querySelector(s) as HTMLElement;
+    const steps=JSON.parse(q('.walk-data').textContent!);
+    const buttons=Array.from(this.querySelectorAll<HTMLButtonElement>('[data-step]'));
+    const window=this.querySelector('.focus-window')!;
+    const flow=this.querySelector('.walk-flow') as SVGPathElement;
+    const packet=this.querySelector('.walk-packet')!;
+    const motion=matchMedia('(prefers-reduced-motion: reduce)');
+    const views=[
+      [7,40,420,338,'M215 120 C240 77 282 79 316 86'],
+      [280,40,342,205,'M430 88 C490 108 514 157 514 243'],
+      [260,210,342,183,'M432 87 C490 102 514 152 514 243'],
+      [250,50,353,330,'M280 243 C245 222 248 179 272 158 C284 145 296 137 309 136'],
+      [7,125,590,325,'M267 407 C262 383 234 347 218 311'],
+      [550,32,650,428,'M551 221 L635 221 M791 223 L874 223'],
+    ];
+    let active=-1,playing=false,elapsed=0,last=0,raf=0,visible=false,started=false;
+    const duration=5200;
+    const play=q('.play'),overview=q('.overview');
+    const robotFrame=this.querySelector('.kinova-stage iframe') as HTMLIFrameElement;
+    const robotButton=()=>robotFrame.contentDocument?.querySelector('.tabler-icon-player-play-filled, .tabler-icon-player-pause-filled')?.closest('button');
+    const syncRobot=()=>{const button=robotButton();if(button){const running=!!button.querySelector('.tabler-icon-player-pause-filled');if(running!==playing)button.click();}};
+    robotFrame.addEventListener('load',()=>{
+      const doc=robotFrame.contentDocument;if(!doc?.body)return;
+      const ready=new MutationObserver(()=>{const button=robotButton();if(!button)return;ready.disconnect();syncRobot();
+        const changes=new MutationObserver(()=>{const running=!!button.querySelector('.tabler-icon-player-pause-filled');if(running!==playing)setPlaying(running,false);});
+        changes.observe(button,{childList:true,subtree:true,attributes:true});
+      });ready.observe(doc.body,{childList:true,subtree:true});
+    });
+    const setPlaying=(value:boolean,sync=true)=>{playing=value;if(sync&&active===5)syncRobot();this.toggleAttribute('data-playing',value);play.innerHTML=value?'Pause <span aria-hidden="true">Ⅱ</span>':'Play walkthrough <span aria-hidden="true">▷</span>';play.setAttribute('aria-label',value?'Pause walkthrough':'Play walkthrough');cancelAnimationFrame(raf);last=0;if(value&&visible&&!document.hidden)raf=requestAnimationFrame(tick);};
+    const select=(i:number,announce=false)=>{
+      active=i;elapsed=0;this.dataset.step=String(i);
+      q('.walk-stage').hidden=i===5;q('.kinova-stage').hidden=i!==5;
+      const frame=this.querySelector('.kinova-stage iframe') as HTMLIFrameElement;
+      if(i!==5)frame.removeAttribute('src');
+      if(i===5&&!frame.hasAttribute('src'))frame.src=frame.dataset.src!;this.toggleAttribute('data-active',i>=0);overview.setAttribute('aria-pressed',String(i<0));
+      buttons.forEach((b,j)=>{b.setAttribute('aria-pressed',String(j===i));(b.querySelector('i') as HTMLElement).style.width='0%';});
+      if(i<0){q('.walk-counter').textContent='RHO';q('.walk-description h2').textContent='From coding agent to robot policy';q('.walk-description p').textContent='Follow the loop, or choose a step to explore how repositories become executable robot policies.';return;}
+      const [x,y,w,h,d]=views[i];[['x',x],['y',y],['width',w],['height',h]].forEach(([k,v])=>window.setAttribute(String(k),String(v)));flow.setAttribute('d',String(d));
+      const p=flow.getPointAtLength(0);packet.setAttribute('cx',String(p.x));packet.setAttribute('cy',String(p.y));
+      q('.walk-counter').textContent=String(i+1).padStart(2,'0');q('.walk-description h2').textContent=steps[i][1];q('.walk-description p').textContent=steps[i][2];
+      if(announce)q('.walk-status').textContent=`Step ${i+1} of 6. ${steps[i][1]}. ${steps[i][2]}`;
+    };
+    const tick=(time:number)=>{if(!playing||!visible||document.hidden)return;if(last)elapsed+=Math.min(time-last,100);last=time;
+      if(active===5)return;
+      if(active>=0){const progress=Math.min(elapsed/duration,1);(buttons[active].querySelector('i') as HTMLElement).style.width=`${progress*100}%`;
+        if(!motion.matches){const p=flow.getPointAtLength(flow.getTotalLength()*((elapsed%2000)/2000));packet.setAttribute('cx',String(p.x));packet.setAttribute('cy',String(p.y));}
+        if(elapsed>=duration){if(active===5){setPlaying(false);return;}select(active+1);}}
+      raf=requestAnimationFrame(tick);
+    };
+    buttons.forEach((b,i)=>b.addEventListener('click',()=>{started=true;select(i,true);setPlaying(playing&&!motion.matches);}));
+    play.addEventListener('click',()=>{started=true;if(active<0)select(0);setPlaying(!playing);});
+    overview.addEventListener('click',()=>{started=true;setPlaying(false);select(-1);});
+    this.querySelector('.walk-steps')!.addEventListener('keydown',(event)=>{const e=event as KeyboardEvent;if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const i=e.key==='Home'?0:e.key==='End'?5:(Math.max(active,0)+(e.key==='ArrowRight'?1:5))%6;started=true;select(i,true);setPlaying(playing&&!motion.matches);buttons[i].focus();});
+    const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible&&!started&&!motion.matches){started=true;select(0);setPlaying(true);}else if(playing)setPlaying(true);},{threshold:.3});observer.observe(this);
+    document.addEventListener('visibilitychange',()=>{if(playing)setPlaying(true);});
+    motion.addEventListener('change',()=>{if(motion.matches){setPlaying(false);select(-1);}});
+    q('.walk-controls').hidden=false;
+  }
+}
+if(!customElements.get('rho-walkthrough'))customElements.define('rho-walkthrough',RhoWalkthrough);
+</script>

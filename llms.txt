@@ -1,0 +1,17 @@
+# RHO: Your Coding Agent is Secretly a Roboticist
+
+> Anonymous project page for a paper under double-anonymous review.
+
+- **Authors**: Anonymous
+
+---
+
+## Abstract
+
+## Method
+
+## Results
+
+## Demos
+
+## Hardware
