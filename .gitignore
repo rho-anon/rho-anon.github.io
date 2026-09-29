@@ -1,0 +1,5 @@
+source/
+node_modules/
+publish.sh
+README.md
+.DS_Store
