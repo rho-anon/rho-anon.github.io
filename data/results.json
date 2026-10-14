@@ -1,0 +1,55 @@
+{
+  "description": "Numbers displayed in the anonymous RHO project page. Percentages are reported to source precision; no inferred confidence intervals.",
+  "sources": {
+    "libero": "Manuscript LIBERO-PRO results and accompanying six-cell figure; selected repository evaluated on 500 trials per cell, 3000 total. Baseline cells follow the manuscript figure's per-task reconstruction.",
+    "robosuite": "Manuscript experiments: per-task comparison, one-mutation baseline and structural-prior tables.",
+    "latency": "CaP-X timing table: multi-turn and single-turn execution, mean of 20 cube-stack trials. RHO: single-turn execution, mean of 20 cube-stack trials. Published baseline timing and success results use different prompt configurations and are separate measurements.",
+    "rai": "Manuscript RAI O3DE appendix: easy/hard held-out headline and compute tables. Success is mean task score, including partial credit, over 21 tasks and 3 runs. Standard deviations are across runs. Compute totals are representative single runs over 21 tasks.",
+    "physical": "Manuscript sim-to-real evaluation, 20 trials for each of three task/embodiment pairs. Policy code unchanged; embodiment-specific primitive implementations."
+  },
+  "libero": [
+    {"suite": "Goal", "perturbation": "swap", "rhoCount": 347, "trials": 500, "rho": 69.4, "cap": 25.6, "pi": 37.8, "openvla": 0},
+    {"suite": "Goal", "perturbation": "task", "rhoCount": 234, "trials": 500, "rho": 46.8, "cap": 16.8, "pi": 2.0, "openvla": 0},
+    {"suite": "Object", "perturbation": "swap", "rhoCount": 373, "trials": 500, "rho": 74.6, "cap": 21.8, "pi": 17.4, "openvla": 0},
+    {"suite": "Object", "perturbation": "task", "rhoCount": 346, "trials": 500, "rho": 69.2, "cap": 18.2, "pi": 0.8, "openvla": 0},
+    {"suite": "Spatial", "perturbation": "swap", "rhoCount": 293, "trials": 500, "rho": 58.6, "cap": 11.8, "pi": 20.4, "openvla": 0},
+    {"suite": "Spatial", "perturbation": "task", "rhoCount": 337, "trials": 500, "rho": 67.4, "cap": 14.0, "pi": 0.8, "openvla": 0}
+  ],
+  "robosuite": [
+    {"task": "Lift cube", "rho": 98, "cap": 97},
+    {"task": "Stack cube", "rho": 98, "cap": 98},
+    {"task": "Restack cube", "rho": 54, "cap": 89},
+    {"task": "Nut assembly", "rho": 1, "cap": 0},
+    {"task": "Wipe spill", "rho": 100, "cap": 100},
+    {"task": "Two-arm lift", "rho": 53, "cap": 74},
+    {"task": "Two-arm handover", "rho": 86, "cap": 20}
+  ],
+  "latency": [
+    {"system": "CaP-Agent0 · multi-turn", "seconds": 113.6},
+    {"system": "CaP-Agent0 · single-turn", "seconds": 28.4},
+    {"system": "RHO · single-turn", "seconds": 9.31}
+  ],
+  "representation": [
+    {"seed": "Multi-file repository", "model": "Codex GPT-5.5", "generations": 200, "success": 70},
+    {"seed": "Single file", "model": "Codex GPT-5.5", "generations": 250, "success": 63.86},
+    {"seed": "Free-form code", "model": "Qwen3.6-27B", "generations": 200, "success": 35},
+    {"seed": "Finite state machine", "model": "Qwen3.6-27B", "generations": 200, "success": 18.14}
+  ],
+  "oneMutation": [
+    {"configuration": "Codex GPT-5.5", "success": 30},
+    {"configuration": "Claude Code Opus 4.7", "success": 16.43},
+    {"configuration": "Claude Code Sonnet 4.6", "success": 21.14},
+    {"configuration": "Qwen3.6-27B", "success": 13.43}
+  ],
+  "rai": [
+    {"difficulty": "Easy", "configuration": "Repository", "seed": 68.3, "seedSD": 9.9, "evolved": 88.9, "evolvedSD": 2.8, "lift": 20.6, "seedCalls": 108, "evolvedCalls": 89, "callsChange": -17.6, "seedSeconds": 686, "evolvedSeconds": 660, "secondsChange": -3.8},
+    {"difficulty": "Easy", "configuration": "Prompt only", "seed": 65.1, "seedSD": 7.3, "evolved": 79.4, "evolvedSD": 2.8, "lift": 14.3, "seedCalls": 98, "evolvedCalls": 89, "callsChange": -9.2, "seedSeconds": 630, "evolvedSeconds": 578, "secondsChange": -8.2},
+    {"difficulty": "Hard", "configuration": "Repository", "seed": 23.5, "seedSD": 3.8, "evolved": 44.3, "evolvedSD": 2.4, "lift": 20.8, "seedCalls": 205, "evolvedCalls": 149, "callsChange": -27.3, "seedSeconds": 1278, "evolvedSeconds": 1019, "secondsChange": -20.3},
+    {"difficulty": "Hard", "configuration": "Prompt only", "seed": 25.8, "seedSD": 12, "evolved": 37.6, "evolvedSD": 5.4, "lift": 11.8, "seedCalls": 216, "evolvedCalls": 251, "callsChange": 16.2, "seedSeconds": 1363, "evolvedSeconds": 1827, "secondsChange": 34}
+  ],
+  "physical": [
+    {"robot": "Franka Panda", "task": "Lift cube", "successes": 14, "trials": 20},
+    {"robot": "Franka Panda", "task": "Stack cube", "successes": 11, "trials": 20},
+    {"robot": "Kinova Gen3", "task": "Lift mouse", "successes": 17, "trials": 20}
+  ]
+}

@@ -1,0 +1,1863 @@
+{
+  "benchmark": "Robosuite",
+  "metric": "Mean validation shaped reward",
+  "validation_instances": 70,
+  "generations": 200,
+  "selected_id": "g134-s134",
+  "points": [
+    {
+      "id": "g0-s0",
+      "generation": 0,
+      "validation_reward": 0.09316021426488201,
+      "running_best": 0.09316021426488201
+    },
+    {
+      "id": "g1-s1",
+      "generation": 1,
+      "validation_reward": 0.10674082200620652,
+      "running_best": 0.10674082200620652
+    },
+    {
+      "id": "g3-s3",
+      "generation": 3,
+      "validation_reward": 0.26575979323390464,
+      "running_best": 0.26575979323390464
+    },
+    {
+      "id": "g4-s4",
+      "generation": 4,
+      "validation_reward": 0.1078636620374019,
+      "running_best": 0.26575979323390464
+    },
+    {
+      "id": "g5-s5",
+      "generation": 5,
+      "validation_reward": 0.19065230726799037,
+      "running_best": 0.26575979323390464
+    },
+    {
+      "id": "g6-s6",
+      "generation": 6,
+      "validation_reward": 0.33540751912786065,
+      "running_best": 0.33540751912786065
+    },
+    {
+      "id": "g8-s8",
+      "generation": 8,
+      "validation_reward": 0.40457023200674597,
+      "running_best": 0.40457023200674597
+    },
+    {
+      "id": "g9-s9",
+      "generation": 9,
+      "validation_reward": 0.43430294865339997,
+      "running_best": 0.43430294865339997
+    },
+    {
+      "id": "g11-s11",
+      "generation": 11,
+      "validation_reward": 0.41737157813536063,
+      "running_best": 0.43430294865339997
+    },
+    {
+      "id": "g12-s12",
+      "generation": 12,
+      "validation_reward": 0.1760101428928112,
+      "running_best": 0.43430294865339997
+    },
+    {
+      "id": "g13-s13",
+      "generation": 13,
+      "validation_reward": 0.12396090054645971,
+      "running_best": 0.43430294865339997
+    },
+    {
+      "id": "g14-s14",
+      "generation": 14,
+      "validation_reward": 0.4349639040362867,
+      "running_best": 0.4349639040362867
+    },
+    {
+      "id": "g16-s16",
+      "generation": 16,
+      "validation_reward": 0.24469871611663402,
+      "running_best": 0.4349639040362867
+    },
+    {
+      "id": "g19-s19",
+      "generation": 19,
+      "validation_reward": 0.5536267855931806,
+      "running_best": 0.5536267855931806
+    },
+    {
+      "id": "g26-s26",
+      "generation": 26,
+      "validation_reward": 0.3634016979851127,
+      "running_best": 0.5536267855931806
+    },
+    {
+      "id": "g28-s28",
+      "generation": 28,
+      "validation_reward": 0.6007231828612946,
+      "running_best": 0.6007231828612946
+    },
+    {
+      "id": "g32-s32",
+      "generation": 32,
+      "validation_reward": 0.5709738624284423,
+      "running_best": 0.6007231828612946
+    },
+    {
+      "id": "g37-s37",
+      "generation": 37,
+      "validation_reward": 0.5658059660873566,
+      "running_best": 0.6007231828612946
+    },
+    {
+      "id": "g38-s38",
+      "generation": 38,
+      "validation_reward": 0.6411554135986508,
+      "running_best": 0.6411554135986508
+    },
+    {
+      "id": "g39-s39",
+      "generation": 39,
+      "validation_reward": 0.3404135151872259,
+      "running_best": 0.6411554135986508
+    },
+    {
+      "id": "g40-s40",
+      "generation": 40,
+      "validation_reward": 0.373223413571129,
+      "running_best": 0.6411554135986508
+    },
+    {
+      "id": "g41-s41",
+      "generation": 41,
+      "validation_reward": 0.596527715492514,
+      "running_best": 0.6411554135986508
+    },
+    {
+      "id": "g42-s42",
+      "generation": 42,
+      "validation_reward": 0.648700184059433,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g44-s44",
+      "generation": 44,
+      "validation_reward": 0.6464898355092968,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g46-s46",
+      "generation": 46,
+      "validation_reward": 0.6337234132521223,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g50-s50",
+      "generation": 50,
+      "validation_reward": 0.5647680793425948,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g52-s52",
+      "generation": 52,
+      "validation_reward": 0.6222390661830302,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g54-s54",
+      "generation": 54,
+      "validation_reward": 0.6290922404478239,
+      "running_best": 0.648700184059433
+    },
+    {
+      "id": "g55-s55",
+      "generation": 55,
+      "validation_reward": 0.6522681002911302,
+      "running_best": 0.6522681002911302
+    },
+    {
+      "id": "g57-s57",
+      "generation": 57,
+      "validation_reward": 0.6006089472921817,
+      "running_best": 0.6522681002911302
+    },
+    {
+      "id": "g58-s58",
+      "generation": 58,
+      "validation_reward": 0.5335514390500075,
+      "running_best": 0.6522681002911302
+    },
+    {
+      "id": "g60-s60",
+      "generation": 60,
+      "validation_reward": 0.5637978062496112,
+      "running_best": 0.6522681002911302
+    },
+    {
+      "id": "g61-s61",
+      "generation": 61,
+      "validation_reward": 0.6653804800937416,
+      "running_best": 0.6653804800937416
+    },
+    {
+      "id": "g62-s62",
+      "generation": 62,
+      "validation_reward": 0.5763488113396971,
+      "running_best": 0.6653804800937416
+    },
+    {
+      "id": "g64-s64",
+      "generation": 64,
+      "validation_reward": 0.7059166560606808,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g65-s65",
+      "generation": 65,
+      "validation_reward": 0.6069506762924426,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g66-s66",
+      "generation": 66,
+      "validation_reward": 0.5898658149719392,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g69-s69",
+      "generation": 69,
+      "validation_reward": 0.6672454333134862,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g70-s70",
+      "generation": 70,
+      "validation_reward": 0.6778791951776403,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g72-s72",
+      "generation": 72,
+      "validation_reward": 0.638082570278664,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g73-s73",
+      "generation": 73,
+      "validation_reward": 0.5893993969512055,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g74-s74",
+      "generation": 74,
+      "validation_reward": 0.6002123877619343,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g75-s75",
+      "generation": 75,
+      "validation_reward": 0.4916956367688438,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g77-s77",
+      "generation": 77,
+      "validation_reward": 0.6637811596069998,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g81-s81",
+      "generation": 81,
+      "validation_reward": 0.6403226621766213,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g83-s83",
+      "generation": 83,
+      "validation_reward": 0.6416274442593024,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g85-s85",
+      "generation": 85,
+      "validation_reward": 0.5483354086627461,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g88-s88",
+      "generation": 88,
+      "validation_reward": 0.4990460836151732,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g90-s90",
+      "generation": 90,
+      "validation_reward": 0.5949887408666071,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g91-s91",
+      "generation": 91,
+      "validation_reward": 0.6341241280110769,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g92-s92",
+      "generation": 92,
+      "validation_reward": 0.61592949000979,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g94-s94",
+      "generation": 94,
+      "validation_reward": 0.566881615759256,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g96-s96",
+      "generation": 96,
+      "validation_reward": 0.6103027669121592,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g98-s98",
+      "generation": 98,
+      "validation_reward": 0.5547317108494637,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g101-s101",
+      "generation": 101,
+      "validation_reward": 0.641039017063339,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g102-s102",
+      "generation": 102,
+      "validation_reward": 0.5895352379473485,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g104-s104",
+      "generation": 104,
+      "validation_reward": 0.6379078212562184,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g106-s106",
+      "generation": 106,
+      "validation_reward": 0.5642421757126221,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g107-s107",
+      "generation": 107,
+      "validation_reward": 0.5683329918439144,
+      "running_best": 0.7059166560606808
+    },
+    {
+      "id": "g108-s108",
+      "generation": 108,
+      "validation_reward": 0.7095695401316868,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g111-s111",
+      "generation": 111,
+      "validation_reward": 0.5992290996063284,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g113-s113",
+      "generation": 113,
+      "validation_reward": 0.6523726136976835,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g114-s114",
+      "generation": 114,
+      "validation_reward": 0.6135663178469439,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g115-s115",
+      "generation": 115,
+      "validation_reward": 0.654161552987628,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g116-s116",
+      "generation": 116,
+      "validation_reward": 0.6042813977366731,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g117-s117",
+      "generation": 117,
+      "validation_reward": 0.6395795866156853,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g119-s119",
+      "generation": 119,
+      "validation_reward": 0.6464776329280938,
+      "running_best": 0.7095695401316868
+    },
+    {
+      "id": "g127-s127",
+      "generation": 127,
+      "validation_reward": 0.7135664074624959,
+      "running_best": 0.7135664074624959
+    },
+    {
+      "id": "g129-s129",
+      "generation": 129,
+      "validation_reward": 0.6655485488743446,
+      "running_best": 0.7135664074624959
+    },
+    {
+      "id": "g130-s130",
+      "generation": 130,
+      "validation_reward": 0.5997719913385032,
+      "running_best": 0.7135664074624959
+    },
+    {
+      "id": "g131-s131",
+      "generation": 131,
+      "validation_reward": 0.6539055878502593,
+      "running_best": 0.7135664074624959
+    },
+    {
+      "id": "g133-s133",
+      "generation": 133,
+      "validation_reward": 0.6170235834557345,
+      "running_best": 0.7135664074624959
+    },
+    {
+      "id": "g134-s134",
+      "generation": 134,
+      "validation_reward": 0.7309816692023996,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g139-s139",
+      "generation": 139,
+      "validation_reward": 0.6822588402852185,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g142-s142",
+      "generation": 142,
+      "validation_reward": 0.6579804557487609,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g146-s146",
+      "generation": 146,
+      "validation_reward": 0.6553119513918022,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g147-s147",
+      "generation": 147,
+      "validation_reward": 0.6344862568740363,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g150-s150",
+      "generation": 150,
+      "validation_reward": 0.5979102281630456,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g154-s154",
+      "generation": 154,
+      "validation_reward": 0.6798804972046453,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g159-s159",
+      "generation": 159,
+      "validation_reward": 0.6266233809787123,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g161-s161",
+      "generation": 161,
+      "validation_reward": 0.5459134717737043,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g165-s165",
+      "generation": 165,
+      "validation_reward": 0.536904599356976,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g166-s166",
+      "generation": 166,
+      "validation_reward": 0.5756305469693566,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g168-s168",
+      "generation": 168,
+      "validation_reward": 0.5676055520113329,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g169-s169",
+      "generation": 169,
+      "validation_reward": 0.6905931716105363,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g171-s171",
+      "generation": 171,
+      "validation_reward": 0.6783316657873986,
+      "running_best": 0.7309816692023996
+    },
+    {
+      "id": "g172-s172",
+      "generation": 172,
+      "validation_reward": 0.4838640078049378,
+      "running_best": 0.7309816692023996
+    }
+  ],
+  "lineage": [
+    {
+      "id": "g0-s0",
+      "parent": null,
+      "generation": 0,
+      "depth": 0,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g1-s1",
+      "parent": "g0-s0",
+      "generation": 1,
+      "depth": 1,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g2-s2",
+      "parent": "g0-s0",
+      "generation": 2,
+      "depth": 1,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g3-s3",
+      "parent": "g0-s0",
+      "generation": 3,
+      "depth": 1,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g4-s4",
+      "parent": "g1-s1",
+      "generation": 4,
+      "depth": 2,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g5-s5",
+      "parent": "g1-s1",
+      "generation": 5,
+      "depth": 2,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g6-s6",
+      "parent": "g4-s4",
+      "generation": 6,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g7-s7",
+      "parent": "g4-s4",
+      "generation": 7,
+      "depth": 3,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g8-s8",
+      "parent": "g6-s6",
+      "generation": 8,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g9-s9",
+      "parent": "g3-s3",
+      "generation": 9,
+      "depth": 2,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g10-s10",
+      "parent": "g4-s4",
+      "generation": 10,
+      "depth": 3,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g11-s11",
+      "parent": "g5-s5",
+      "generation": 11,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g12-s12",
+      "parent": "g5-s5",
+      "generation": 12,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g13-s13",
+      "parent": "g4-s4",
+      "generation": 13,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g14-s14",
+      "parent": "g9-s9",
+      "generation": 14,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g15-s15",
+      "parent": "g9-s9",
+      "generation": 15,
+      "depth": 3,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g16-s16",
+      "parent": "g9-s9",
+      "generation": 16,
+      "depth": 3,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g17-s17",
+      "parent": "g8-s8",
+      "generation": 17,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g18-s18",
+      "parent": "g13-s13",
+      "generation": 18,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g19-s19",
+      "parent": "g11-s11",
+      "generation": 19,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g20-s20",
+      "parent": "g8-s8",
+      "generation": 20,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g21-s21",
+      "parent": "g8-s8",
+      "generation": 21,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g22-s22",
+      "parent": "g9-s9",
+      "generation": 22,
+      "depth": 3,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g23-s23",
+      "parent": "g9-s9",
+      "generation": 23,
+      "depth": 3,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g24-s24",
+      "parent": "g8-s8",
+      "generation": 24,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g25-s25",
+      "parent": "g11-s11",
+      "generation": 25,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g26-s26",
+      "parent": "g6-s6",
+      "generation": 26,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g27-s27",
+      "parent": "g26-s26",
+      "generation": 27,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g28-s28",
+      "parent": "g19-s19",
+      "generation": 28,
+      "depth": 5,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g30-s30",
+      "parent": "g28-s28",
+      "generation": 30,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g31-s31",
+      "parent": "g11-s11",
+      "generation": 31,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g32-s32",
+      "parent": "g19-s19",
+      "generation": 32,
+      "depth": 5,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g33-s33",
+      "parent": "g28-s28",
+      "generation": 33,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g34-s34",
+      "parent": "g13-s13",
+      "generation": 34,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g35-s35",
+      "parent": "g19-s19",
+      "generation": 35,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g36-s36",
+      "parent": "g32-s32",
+      "generation": 36,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g37-s37",
+      "parent": "g6-s6",
+      "generation": 37,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g38-s38",
+      "parent": "g28-s28",
+      "generation": 38,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g39-s39",
+      "parent": "g6-s6",
+      "generation": 39,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g40-s40",
+      "parent": "g6-s6",
+      "generation": 40,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g41-s41",
+      "parent": "g38-s38",
+      "generation": 41,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g42-s42",
+      "parent": "g28-s28",
+      "generation": 42,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g43-s43",
+      "parent": "g38-s38",
+      "generation": 43,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g44-s44",
+      "parent": "g38-s38",
+      "generation": 44,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g45-s45",
+      "parent": "g41-s41",
+      "generation": 45,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g46-s46",
+      "parent": "g32-s32",
+      "generation": 46,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g47-s47",
+      "parent": "g28-s28",
+      "generation": 47,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g48-s48",
+      "parent": "g40-s40",
+      "generation": 48,
+      "depth": 5,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g49-s49",
+      "parent": "g38-s38",
+      "generation": 49,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g50-s50",
+      "parent": "g42-s42",
+      "generation": 50,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g51-s51",
+      "parent": "g6-s6",
+      "generation": 51,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g52-s52",
+      "parent": "g46-s46",
+      "generation": 52,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g53-s53",
+      "parent": "g6-s6",
+      "generation": 53,
+      "depth": 4,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g54-s54",
+      "parent": "g41-s41",
+      "generation": 54,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g55-s55",
+      "parent": "g52-s52",
+      "generation": 55,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g56-s56",
+      "parent": "g38-s38",
+      "generation": 56,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g57-s57",
+      "parent": "g42-s42",
+      "generation": 57,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g58-s58",
+      "parent": "g12-s12",
+      "generation": 58,
+      "depth": 4,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g59-s59",
+      "parent": "g55-s55",
+      "generation": 59,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g60-s60",
+      "parent": "g46-s46",
+      "generation": 60,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g61-s61",
+      "parent": "g42-s42",
+      "generation": 61,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g62-s62",
+      "parent": "g28-s28",
+      "generation": 62,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g63-s63",
+      "parent": "g62-s62",
+      "generation": 63,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g64-s64",
+      "parent": "g41-s41",
+      "generation": 64,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g65-s65",
+      "parent": "g64-s64",
+      "generation": 65,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g66-s66",
+      "parent": "g42-s42",
+      "generation": 66,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g67-s67",
+      "parent": "g52-s52",
+      "generation": 67,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g68-s68",
+      "parent": "g62-s62",
+      "generation": 68,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g69-s69",
+      "parent": "g61-s61",
+      "generation": 69,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g70-s70",
+      "parent": "g64-s64",
+      "generation": 70,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g71-s71",
+      "parent": "g46-s46",
+      "generation": 71,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g72-s72",
+      "parent": "g55-s55",
+      "generation": 72,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g73-s73",
+      "parent": "g62-s62",
+      "generation": 73,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g74-s74",
+      "parent": "g55-s55",
+      "generation": 74,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g75-s75",
+      "parent": "g32-s32",
+      "generation": 75,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g76-s76",
+      "parent": "g74-s74",
+      "generation": 76,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g77-s77",
+      "parent": "g55-s55",
+      "generation": 77,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g78-s78",
+      "parent": "g55-s55",
+      "generation": 78,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g79-s79",
+      "parent": "g55-s55",
+      "generation": 79,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g80-s80",
+      "parent": "g32-s32",
+      "generation": 80,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g81-s81",
+      "parent": "g61-s61",
+      "generation": 81,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g82-s82",
+      "parent": "g61-s61",
+      "generation": 82,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g83-s83",
+      "parent": "g61-s61",
+      "generation": 83,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g84-s84",
+      "parent": "g55-s55",
+      "generation": 84,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g85-s85",
+      "parent": "g32-s32",
+      "generation": 85,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g86-s86",
+      "parent": "g52-s52",
+      "generation": 86,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g87-s87",
+      "parent": "g55-s55",
+      "generation": 87,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g88-s88",
+      "parent": "g32-s32",
+      "generation": 88,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g89-s89",
+      "parent": "g55-s55",
+      "generation": 89,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g90-s90",
+      "parent": "g32-s32",
+      "generation": 90,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g91-s91",
+      "parent": "g77-s77",
+      "generation": 91,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g92-s92",
+      "parent": "g55-s55",
+      "generation": 92,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g93-s93",
+      "parent": "g74-s74",
+      "generation": 93,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g94-s94",
+      "parent": "g74-s74",
+      "generation": 94,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g95-s95",
+      "parent": "g88-s88",
+      "generation": 95,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g96-s96",
+      "parent": "g88-s88",
+      "generation": 96,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g97-s97",
+      "parent": "g52-s52",
+      "generation": 97,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g98-s98",
+      "parent": "g32-s32",
+      "generation": 98,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g99-s99",
+      "parent": "g74-s74",
+      "generation": 99,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g100-s100",
+      "parent": "g98-s98",
+      "generation": 100,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g101-s101",
+      "parent": "g74-s74",
+      "generation": 101,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g102-s102",
+      "parent": "g74-s74",
+      "generation": 102,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g103-s103",
+      "parent": "g32-s32",
+      "generation": 103,
+      "depth": 6,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g104-s104",
+      "parent": "g52-s52",
+      "generation": 104,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g105-s105",
+      "parent": "g55-s55",
+      "generation": 105,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g106-s106",
+      "parent": "g98-s98",
+      "generation": 106,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g107-s107",
+      "parent": "g52-s52",
+      "generation": 107,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g108-s108",
+      "parent": "g91-s91",
+      "generation": 108,
+      "depth": 11,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g109-s109",
+      "parent": "g74-s74",
+      "generation": 109,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g110-s110",
+      "parent": "g85-s85",
+      "generation": 110,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g111-s111",
+      "parent": "g32-s32",
+      "generation": 111,
+      "depth": 6,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g112-s112",
+      "parent": "g52-s52",
+      "generation": 112,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g113-s113",
+      "parent": "g85-s85",
+      "generation": 113,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g114-s114",
+      "parent": "g111-s111",
+      "generation": 114,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g115-s115",
+      "parent": "g55-s55",
+      "generation": 115,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g116-s116",
+      "parent": "g55-s55",
+      "generation": 116,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g117-s117",
+      "parent": "g91-s91",
+      "generation": 117,
+      "depth": 11,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g118-s118",
+      "parent": "g74-s74",
+      "generation": 118,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g119-s119",
+      "parent": "g88-s88",
+      "generation": 119,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g120-s120",
+      "parent": "g55-s55",
+      "generation": 120,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g121-s121",
+      "parent": "g52-s52",
+      "generation": 121,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g122-s122",
+      "parent": "g74-s74",
+      "generation": 122,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g123-s123",
+      "parent": "g114-s114",
+      "generation": 123,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g124-s124",
+      "parent": "g114-s114",
+      "generation": 124,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g125-s125",
+      "parent": "g114-s114",
+      "generation": 125,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g126-s126",
+      "parent": "g55-s55",
+      "generation": 126,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g127-s127",
+      "parent": "g108-s108",
+      "generation": 127,
+      "depth": 12,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g128-s128",
+      "parent": "g55-s55",
+      "generation": 128,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g129-s129",
+      "parent": "g91-s91",
+      "generation": 129,
+      "depth": 11,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g130-s130",
+      "parent": "g74-s74",
+      "generation": 130,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g131-s131",
+      "parent": "g55-s55",
+      "generation": 131,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g132-s132",
+      "parent": "g52-s52",
+      "generation": 132,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g133-s133",
+      "parent": "g52-s52",
+      "generation": 133,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g134-s134",
+      "parent": "g127-s127",
+      "generation": 134,
+      "depth": 13,
+      "saved_score": true,
+      "selected_ancestry": true
+    },
+    {
+      "id": "g135-s135",
+      "parent": "g55-s55",
+      "generation": 135,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g139-s139",
+      "parent": "g52-s52",
+      "generation": 139,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g142-s142",
+      "parent": "g55-s55",
+      "generation": 142,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g143-s143",
+      "parent": "g88-s88",
+      "generation": 143,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g144-s144",
+      "parent": "g134-s134",
+      "generation": 144,
+      "depth": 14,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g145-s145",
+      "parent": "g91-s91",
+      "generation": 145,
+      "depth": 11,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g146-s146",
+      "parent": "g55-s55",
+      "generation": 146,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g147-s147",
+      "parent": "g74-s74",
+      "generation": 147,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g148-s148",
+      "parent": "g55-s55",
+      "generation": 148,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g150-s150",
+      "parent": "g114-s114",
+      "generation": 150,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g151-s151",
+      "parent": "g114-s114",
+      "generation": 151,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g152-s152",
+      "parent": "g74-s74",
+      "generation": 152,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g153-s153",
+      "parent": "g55-s55",
+      "generation": 153,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g154-s154",
+      "parent": "g52-s52",
+      "generation": 154,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g155-s155",
+      "parent": "g114-s114",
+      "generation": 155,
+      "depth": 8,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g156-s156",
+      "parent": "g55-s55",
+      "generation": 156,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g159-s159",
+      "parent": "g134-s134",
+      "generation": 159,
+      "depth": 14,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g160-s160",
+      "parent": "g150-s150",
+      "generation": 160,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g161-s161",
+      "parent": "g55-s55",
+      "generation": 161,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g162-s162",
+      "parent": "g74-s74",
+      "generation": 162,
+      "depth": 10,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g163-s163",
+      "parent": "g134-s134",
+      "generation": 163,
+      "depth": 14,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g164-s164",
+      "parent": "g150-s150",
+      "generation": 164,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g165-s165",
+      "parent": "g88-s88",
+      "generation": 165,
+      "depth": 7,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g166-s166",
+      "parent": "g114-s114",
+      "generation": 166,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g167-s167",
+      "parent": "g88-s88",
+      "generation": 167,
+      "depth": 7,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g168-s168",
+      "parent": "g52-s52",
+      "generation": 168,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g169-s169",
+      "parent": "g154-s154",
+      "generation": 169,
+      "depth": 9,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g170-s170",
+      "parent": "g154-s154",
+      "generation": 170,
+      "depth": 9,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g171-s171",
+      "parent": "g114-s114",
+      "generation": 171,
+      "depth": 8,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g172-s172",
+      "parent": "g74-s74",
+      "generation": 172,
+      "depth": 10,
+      "saved_score": true,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g173-s173",
+      "parent": "g172-s172",
+      "generation": 173,
+      "depth": 11,
+      "saved_score": false,
+      "selected_ancestry": false
+    },
+    {
+      "id": "g182-s182",
+      "parent": "g91-s91",
+      "generation": 182,
+      "depth": 11,
+      "saved_score": false,
+      "selected_ancestry": false
+    }
+  ],
+  "selected_ancestry_count": 14,
+  "scope": "Progress points are the 87 repositories with validation scores retained in the final checkpoint. The lineage includes all 166 recorded nodes. The step line is the running best of the plotted validation means."
+}

@@ -1,34 +1,60 @@
 # RHO: Your Coding Agent is Secretly a Roboticist
 
-> Anonymous project page for a paper under double-anonymous review.
+> RHO searches multi-file robot policy repositories before deployment. Explore held-out generalization, deployment latency, real robot trials, and the cost of search.
 
 - **Authors**: Anonymous
 
 ---
 
+This is an article excerpt. Component-rendered diagrams, code examples, result tables, and videos are available on the full project page.
+
+- [Method and code examples](/#method)
+- [Results and comparison context](/#results)
+- [Results data (JSON)](/data/results.json)
+- [Saved validation scores and their scope](/data/search-progress.html)
+- [Saved validation scores (CSV)](/data/search-progress.csv)
+
+---
+
 ## Abstract
 
-Code-as-Policies (CaP) has shown that large language models can write code to solve robotics tasks by composing perception, planning, and control primitives. Recent CaP systems, however, rely on multi-turn code-generation loops at test time, which is often infeasible for real-time robot control.
-
-We introduce **Robotics Harness Optimization (RHO)**, a paradigm in which tool-enabled coding agents, *at training time*, propose and search for interpretable neurosymbolic multi-file policy repositories (*Repositories-as-Policies*) that compose these primitives rather than a single prompt, function, or file. RHO searches with reflective feedback from environment reward and execution rather than demonstrations.
-
-Our method generalizes to perturbed pick-and-place settings like LIBERO-PRO, reaching 64.33% success where CaP-Agent0, the prior leader, reaches 18.03% over the same primitive API, and where VLAs trained from demonstrations, π0.5 and OpenVLA, average 13.20% and 0.0%. Under single-turn evaluation on Robosuite, RHO reaches 70.0% at 9.31 s per trial, exceeding the 68.29% prior record that required up to six turns of corrective code edits and 113.6 s per trial, a 12.20× speedup.
-
-The evolved repository deploys unchanged to a different robot from the one simulated, and picks up objects never seen during training in 17 of 20 real trials. When an LLM is used in the control loop, as on RAI’s hard O3DE benchmark, RHO optimizes the deployed agent’s multi-file harness of prompts, tools, and control code, improving held-out success from 23.5% to 44.3% with 20% less wall-clock time and 27% fewer tool calls.
+Code-as-Policies (CaP) has shown that large language models (LLMs) can write code to solve robotics tasks by composing perception, planning, and control primitives. Recent CaP systems, however, rely on multi-turn code-generation loops at test time, which is often infeasible for real-time robot control. We introduce **Robotics Harness Optimization (RHO)**, a novel paradigm in which tool-enabled coding agents, *at training time*, propose and search for interpretable neurosymbolic multi-file policy repositories (*Repositories-as-Policies*) that compose these primitives rather than a single prompt, function, or file. RHO searches with reflective feedback from environment reward and execution rather than demonstrations. We show that our method generalizes to perturbed pick-and-place settings like LIBERO-PRO, reaching 64.33% success rate while CaP-Agent0, the prior leader, reaches 18.03% over the same primitive API, and VLAs trained from demonstrations, π₀.₅ and OpenVLA, achieve an average 13.20% and 0.0% success rate respectively. Under single-turn evaluations on Robosuite, RHO reaches 70.0% at 9.31 s per trial, exceeding the 68.29% prior record that required up to 6 turns of corrective LLM code edits and 113.6 s per trial, a 12.20× speedup. We further show that the RHO evolved repository also deploys unchanged to a different robot from that in simulation and successfully picks up objects never seen during training in 17 of 20 real trials. When an LLM is used in the control loop, as on RAI's hard O3DE benchmark, RHO optimizes the deployed agent's multi-file harness of prompts, tools, and control code, improving held-out success from 23.5% to 44.3% with 20% less wall-clock time and 27% fewer tool calls. Videos and further information: [https://rho-anon.github.io](https://rho-anon.github.io).
 
 ## Method
 
+### Benchmark APIs
+
+CaP-Bench provides robot manipulation tasks in Robosuite and LIBERO. RAI connects an LLM agent to ROS 2 tools in the O3DE simulator. In both settings, a policy observes the scene and acts through the supplied APIs:
+
+CaP-Bench exposes perception, grasp planning, inverse kinematics, and motion as separate calls. In RAI, `move_to_point` performs a fixed-orientation pick-and-place action using gripper commands and MoveIt motion planning and execution. The O3DE experiments expose the three tools shown above, with fixed names and signatures. RHO searches for repositories that compose the available APIs to maximize the evaluator’s score.
+
 ### How CaP methods buy success today
 
-A Code-as-Policies agent raises its success rate at test time: it generates several programs per turn, merges them, asks a vision-language model whether the scene changed as intended, and runs the turn again. RHO pays that cost once during optimization and ships frozen code.
+Multi-turn Code-as-Policies systems spend deployment time generating and correcting programs. RHO searches before deployment, preserving useful candidate repositories and refining them with execution feedback. In CaP-Bench it ships fixed policy code; in RAI it ships an improved harness around the existing LLM-driven loop.
 
 ## Results
 
+### Evaluation setup
+
+### Search cost
+
 ## Demos
 
-Each trial is shown at 1× speed. The arm's speed is not a variable we expose to RHO and can be tuned for faster deployments. 20 trials were run: 17 success and 3 failures. We display a subset.
+## Hardware
+
+### Robots and cameras
+
+| | Franka Emika Panda | Kinova Gen3 |
+|---|---|---|
+| Gripper | Franka Hand | Robotiq 2F-85 |
+| Colour camera | Intel RealSense D435i | Omnivision OV5640 |
+| Depth camera | Intel RealSense D435i | Intel RealSense D410 |
+| Colour resolution | 640 × 480 | 1280 × 720 |
+| Camera location | External | Wrist-mounted |
 
 ### Kinova Gen3 with Robotiq gripper
+
+These selected trials are shown at 1× speed. The full mouse-lifting evaluation contains 20 trials: 17 successes and 3 failures. The arm runs at its configured speed.
 
 Three things change between simulation and these trials.
 
@@ -52,15 +78,9 @@ Three things change between simulation and these trials.
 
 The arm descends three times onto the spot the mouse left. Grasp synthesis falls back to a path that places the grasp at the median of a segmentation mask's deprojected depth points, with orientation from a fixed top-down set. Those fall-back attempts stay anchored to the initial observation, so every retry targets a stale pose.
 
-We found this by watching the trial, reading the logs and walking the code. Auditing the same logic inside an end-to-end policy remains an open problem in interpretability. The fix is twelve lines in this repository, with no retraining and no new demonstrations. The trials above ran without it.
+We found this by watching the trial, reading the logs and walking the code. Auditing the same logic inside an end-to-end policy remains an open problem in interpretability. A proposed twelve-line repair refreshes the object observation before a fallback retry, without retraining or new demonstrations. The proposed repair remains untested in these trials.
 
-## Hardware
-
-### Primitives
-
-CaP-Bench exposes each stage separately. RAI covers grasp planning, inverse kinematics and execution in `move_to_point`. At the time of submission, RAI’s manipulation demo exposes five tools. We intentionally expose only three to the agent in the O3DE experiments with the tool names and signatures fixed. RHO’s search process remains fixed across any set of primitives. It searches for the best *Repositories-as-Policies* that compose these primitives to maximize the user provided score.
-
-### Simulation
+### Simulation infrastructure
 
 | | CaP-Bench, Robosuite | RAI, O3DE |
 |---|---|---|
@@ -69,18 +89,4 @@ CaP-Bench exposes each stage separately. RAI covers grasp planning, inverse kine
 | GPU | 2 × NVIDIA B200 | Radeon 8060S, 40 RDNA 3.5 CUs,
 128 GB unified memory |
 
-The RAI experiments ran entirely on the one workstation: ROS 2, MoveIt, O3DE with Vulkan rendering, the perception models, and the coding agent.
-
-### Robots
-
-| | Franka Emika Panda | Kinova Gen3 |
-|---|---|---|
-| Gripper | Franka Hand | Robotiq 2F-85 |
-| Colour camera | Intel RealSense D435i | Omnivision OV5640 |
-| Depth camera | Intel RealSense D435i | Intel RealSense D410 |
-| Colour resolution | 640 × 480 | 1280 × 720 |
-| Camera location | External | Wrist-mounted |
-| Tasks | Lift Cube — 14/20 | Lift Mouse — 17/20 |
-| | Stack Cube — 11/20 | |
-
-The Kinova’s camera sits on the wrist, close to the object. The Franka’s is external and much further back, with a third of the pixels. In the vast majority of trials, Contact-GraspNet fails to produce graspable points and the programs fall back to fixed grasp poses. The grasp synthesis depends on mask quality, so the Franka working from a coarser view (several meters vs under one meter) has a much more challenging deployment environment. This is why Lift Mouse on the Kinova succeeds more often than the nominally simpler Lift Cube on the Franka.
+LIBERO search ran on three DGX Spark nodes connected by InfiniBand. The RAI workstation ran ROS 2, MoveIt, O3DE with Vulkan rendering, perception services, and the coding-agent process; hosted model API usage is separate from this local hardware description.

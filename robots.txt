@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: /sitemap-index.xml
-LLMs-Txt: /llms.txt
+Sitemap: https://rho-anon.github.io/sitemap.xml
