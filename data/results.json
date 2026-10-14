@@ -1,11 +1,11 @@
 {
-  "description": "Numbers displayed in the anonymous RHO project page. Percentages are reported to source precision; no inferred confidence intervals.",
+  "description": "RHO experimental results. Percentages retain the precision of the underlying results; confidence intervals are not estimated.",
   "sources": {
-    "libero": "Manuscript LIBERO-PRO results and accompanying six-cell figure; selected repository evaluated on 500 trials per cell, 3000 total. Baseline cells follow the manuscript figure's per-task reconstruction.",
-    "robosuite": "Manuscript experiments: per-task comparison, one-mutation baseline and structural-prior tables.",
+    "libero": "LIBERO-PRO evaluation: selected repository evaluated on 500 trials per cell, 3000 total. Baseline cell means use a per-task reconstruction of the six-cell comparison.",
+    "robosuite": "Robosuite experiments: per-task comparisons, single-mutation and structural-prior ablations.",
     "latency": "CaP-X timing table: multi-turn and single-turn execution, mean of 20 cube-stack trials. RHO: single-turn execution, mean of 20 cube-stack trials. Published baseline timing and success results use different prompt configurations and are separate measurements.",
-    "rai": "Manuscript RAI O3DE appendix: easy/hard held-out headline and compute tables. Success is mean task score, including partial credit, over 21 tasks and 3 runs. Standard deviations are across runs. Compute totals are representative single runs over 21 tasks.",
-    "physical": "Manuscript sim-to-real evaluation, 20 trials for each of three task/embodiment pairs. Policy code unchanged; embodiment-specific primitive implementations."
+    "rai": "RAI O3DE evaluation: easy/hard held-out results and deployment computation. Success is mean task score, including partial credit, over 21 tasks and 3 runs. Standard deviations are across runs. Compute totals are representative single runs over 21 tasks.",
+    "physical": "Sim-to-real evaluation, 20 trials for each of three task/embodiment pairs. Policy code unchanged; embodiment-specific primitive implementations."
   },
   "libero": [
     {"suite": "Goal", "perturbation": "swap", "rhoCount": 347, "trials": 500, "rho": 69.4, "cap": 25.6, "pi": 37.8, "openvla": 0},
