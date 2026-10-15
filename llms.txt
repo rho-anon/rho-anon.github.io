@@ -66,7 +66,7 @@ Three things change between simulation and these trials.
  
  2
  A moved position
- A hand re-places the mouse between trials, and in one case while the policy is running.
+ A hand moves the mouse between trials, and once during execution.
  
  
  3
@@ -78,7 +78,7 @@ Three things change between simulation and these trials.
 
 The arm descends three times onto the spot the mouse left. Grasp synthesis falls back to a path that places the grasp at the median of a segmentation mask's deprojected depth points, with orientation from a fixed top-down set. Those fall-back attempts stay anchored to the initial observation, so every retry targets a stale pose.
 
-We found this by watching the trial, reading the logs and walking the code. Auditing the same logic inside an end-to-end policy remains an open problem in interpretability. A proposed twelve-line repair refreshes the object observation before a fallback retry, without retraining or new demonstrations. The proposed repair remains untested in these trials.
+We found this by watching the trial, reading the logs and walking the code. A proposed twelve-line repair refreshes the object observation before a fallback retry, without retraining or new demonstrations. The proposed repair remains untested in these trials.
 
 ### Simulation infrastructure
 
