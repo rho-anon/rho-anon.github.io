@@ -20,7 +20,7 @@ This is an article excerpt. Component-rendered diagrams, code examples, result t
 
 Code-as-Policies (CaP) has shown that large language models (LLMs) can write code to solve robotics tasks by composing perception, planning, and control primitives. Recent CaP systems, however, rely on multi-turn code-generation loops at test time, which is often infeasible for real-time robot control. We introduce **Robotics Harness Optimization (RHO)**, a novel paradigm in which tool-enabled coding agents, *at training time*, propose and search for interpretable neurosymbolic multi-file policy repositories (*Repositories-as-Policies*) that compose these primitives rather than a single prompt, function, or file. RHO searches with reflective feedback from environment reward and execution rather than demonstrations. We show that our method generalizes to perturbed pick-and-place settings like LIBERO-PRO, reaching 64.33% success rate while CaP-Agent0, the prior leader, reaches 18.03% over the same primitive API, and VLAs trained from demonstrations, π₀.₅ and OpenVLA, achieve an average 13.20% and 0.0% success rate respectively. Under single-turn evaluations on Robosuite, RHO reaches 70.0% at 9.31 s per trial, exceeding the 68.29% prior record that required up to 6 turns of corrective LLM code edits and 113.6 s per trial, a 12.20× speedup. We further show that the RHO evolved repository also deploys unchanged to a different robot from that in simulation and successfully picks up objects never seen during training in 17 of 20 real trials. When an LLM is used in the control loop, as on RAI's hard O3DE benchmark, RHO optimizes the deployed agent's multi-file harness of prompts, tools, and control code, improving held-out success from 23.5% to 44.3% with 20% less wall-clock time and 27% fewer tool calls. Videos and further information: [https://rho-anon.github.io](https://rho-anon.github.io).
 
-## Method
+## Overview
 
 ### Benchmark APIs
 
@@ -28,9 +28,11 @@ CaP-Bench provides robot manipulation tasks in Robosuite and LIBERO. RAI connect
 
 CaP-Bench exposes perception, grasp planning, inverse kinematics, and motion as separate calls. In RAI, `move_to_point` performs a fixed-orientation pick-and-place action using gripper commands and MoveIt motion planning and execution. The O3DE experiments expose the three tools shown above, with fixed names and signatures. RHO searches for repositories that compose the available APIs to maximize the evaluator’s score.
 
-### How CaP methods buy success today
+### Why search before deployment?
 
 Multi-turn Code-as-Policies systems spend deployment time generating and correcting programs. RHO searches before deployment, preserving useful candidate repositories and refining them with execution feedback. In CaP-Bench it ships fixed policy code; in RAI it ships an improved harness around the existing LLM-driven loop.
+
+## Method
 
 ## Results
 
