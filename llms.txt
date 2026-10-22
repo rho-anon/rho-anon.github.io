@@ -22,6 +22,8 @@ Code-as-Policies (CaP) has shown that large language models (LLMs) can write cod
 
 ## Overview
 
+**RHO moves interactive policy development from inference time to training time.** A coding agent uses robot execution feedback to develop, test, and refine multi-file repositories before deployment. In CaP-Bench, the selected repository runs as fixed code with no deployment-time LLM code generation.
+
 ### Benchmark APIs
 
 CaP-Bench provides robot manipulation tasks in Robosuite and LIBERO. RAI connects an LLM agent to ROS 2 tools in the O3DE simulator. In both settings, a policy observes the scene and acts through the supplied APIs:
@@ -46,13 +48,14 @@ Multi-turn Code-as-Policies systems spend deployment time generating and correct
 
 ### Robots and cameras
 
-| | Franka Emika Panda | Kinova Gen3 |
-|---|---|---|
-| Gripper | Franka Hand | Robotiq 2F-85 |
-| Colour camera | Intel RealSense D435i | Omnivision OV5640 |
-| Depth camera | Intel RealSense D435i | Intel RealSense D410 |
-| Colour resolution | 640 × 480 | 1280 × 720 |
-| Camera location | External | Wrist-mounted |
+ Franka Emika PandaKinova Gen3
+ 
+ GripperFranka HandRobotiq 2F-85
+ Colour cameraIntel RealSense D435iOmnivision OV5640
+ Depth cameraIntel RealSense D435iIntel RealSense D410
+ Colour resolution640 × 4801280 × 720
+ Camera locationExternalWrist-mounted
+ 
 
 ### Kinova Gen3 with Robotiq gripper
 
@@ -84,11 +87,11 @@ We found this by watching the trial, reading the logs and walking the code. A pr
 
 ### Simulation infrastructure
 
-| | CaP-Bench, Robosuite | RAI, O3DE |
-|---|---|---|
-| Platform | Dual-socket server | AMD Ryzen AI Max+ 395 workstation |
-| CPU | 2 × Intel Xeon Platinum 8570 | 16 Zen 5 cores |
-| GPU | 2 × NVIDIA B200 | Radeon 8060S, 40 RDNA 3.5 CUs,
-128 GB unified memory |
-
-LIBERO search ran on three DGX Spark nodes connected by InfiniBand. The RAI workstation ran ROS 2, MoveIt, O3DE with Vulkan rendering, perception services, and the coding-agent process; hosted model API usage is separate from this local hardware description.
+ Robosuite · GPT-5.5LIBERO · GPT-5.6 SolRAI · GPT-5.5
+ 
+ PlatformDual-socket server3 × NVIDIA DGX Spark,
+connected through InfiniBandAMD Ryzen AI Max+ 395 workstation
+ CPU2 × Intel Xeon Platinum 857020-core Arm per node16 Zen 5 cores
+ GPU2 × NVIDIA B200NVIDIA GB10 Blackwell,
+128 GB unified memory per nodeRadeon 8060S, 40 RDNA 3.5 CUs,
+128 GB unified memory

@@ -1,0 +1,169 @@
+{
+  "verificationStatus": "recorded",
+  "description": "Additional Robosuite searches with GPT-6.1. Success values average the recorded evaluations of one repository per search, selected by mean validation reward.",
+  "model": "GPT-6.1",
+  "runCount": 2,
+  "selection": "single_repository_highest_mean_validation_reward",
+  "trainingSeeds": {
+    "first": 101,
+    "last": 125
+  },
+  "evaluationSeeds": {
+    "first": 1,
+    "last": 100
+  },
+  "searchGenerations": 100,
+  "tasks": [
+    {
+      "key": "cube_lifting",
+      "task": "Lift cube",
+      "meanSuccessPercent": 100.0,
+      "perRunSuccesses": [
+        100,
+        100
+      ]
+    },
+    {
+      "key": "cube_stack",
+      "task": "Stack cube",
+      "meanSuccessPercent": 99.0,
+      "perRunSuccesses": [
+        99,
+        99
+      ]
+    },
+    {
+      "key": "cube_restack",
+      "task": "Restack cube",
+      "meanSuccessPercent": 99.0,
+      "perRunSuccesses": [
+        98,
+        100
+      ]
+    },
+    {
+      "key": "nut_assembly",
+      "task": "Nut assembly",
+      "meanSuccessPercent": 98.0,
+      "perRunSuccesses": [
+        97,
+        99
+      ]
+    },
+    {
+      "key": "spill_wipe",
+      "task": "Wipe spill",
+      "meanSuccessPercent": 93.0,
+      "perRunSuccesses": [
+        100,
+        86
+      ]
+    },
+    {
+      "key": "two_arm_lift",
+      "task": "Two-arm lift",
+      "meanSuccessPercent": 99.0,
+      "perRunSuccesses": [
+        100,
+        98
+      ]
+    },
+    {
+      "key": "two_arm_handover",
+      "task": "Two-arm handover",
+      "meanSuccessPercent": 95.0,
+      "perRunSuccesses": [
+        99,
+        91
+      ]
+    }
+  ],
+  "meanSuccessPercent": 97.57142857142857,
+  "runs": [
+    {
+      "id": "run-1",
+      "successes": 693,
+      "trials": 700,
+      "meanReward": 0.9911468164668689
+    },
+    {
+      "id": "run-2",
+      "successes": 673,
+      "trials": 700,
+      "meanReward": 0.967340564373209
+    }
+  ],
+  "timings": {
+    "verificationStatus": "verified",
+    "units": "seconds",
+    "measurement": "wall_time_per_trial_including_video_recording_and_encoding",
+    "selection": "single_repository_highest_mean_validation_reward",
+    "trialsPerTask": 100,
+    "profiles": [
+      {
+        "key": "cpu",
+        "label": "CPU rendering",
+        "rendering": "OSMesa"
+      },
+      {
+        "key": "gpu",
+        "label": "GPU rendering",
+        "rendering": "EGL",
+        "workerHardware": "DGX Spark"
+      }
+    ],
+    "tasks": [
+      {
+        "key": "cube_lifting",
+        "task": "Lift cube",
+        "cpu": 40.01242420196533,
+        "gpu": 13.126520295143127
+      },
+      {
+        "key": "cube_stack",
+        "task": "Stack cube",
+        "cpu": 39.75740200042725,
+        "gpu": 20.228711969852448
+      },
+      {
+        "key": "cube_restack",
+        "task": "Restack cube",
+        "cpu": 62.27943861722946,
+        "gpu": 30.31852048397064
+      },
+      {
+        "key": "nut_assembly",
+        "task": "Nut assembly",
+        "cpu": 59.06761233329773,
+        "gpu": 21.244271721839905
+      },
+      {
+        "key": "spill_wipe",
+        "task": "Wipe spill",
+        "cpu": 70.6050654053688,
+        "gpu": 25.903008031845093
+      },
+      {
+        "key": "two_arm_lift",
+        "task": "Two-arm lift",
+        "cpu": 133.3091749405861,
+        "gpu": 16.61636935710907
+      },
+      {
+        "key": "two_arm_handover",
+        "task": "Two-arm handover",
+        "cpu": 404.7202141094208,
+        "gpu": 41.04201179742813
+      }
+    ],
+    "overall": {
+      "cpu": 115.67876165832791,
+      "gpu": 24.06848766531263
+    }
+  },
+  "taskWiseSelection": {
+    "verificationStatus": "verified",
+    "meanSuccessPercent": 98.21428571428571,
+    "description": "An alternative deployment selects the repository with the highest mean validation reward separately for each task and combines them behind a task dispatcher."
+  }
+}

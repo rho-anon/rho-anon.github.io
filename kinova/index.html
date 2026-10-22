@@ -16,5 +16,26 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      (() => {
+        const root = document.getElementById("root");
+        const labelPlaybackControls = () => {
+          const icon = root.querySelector(".tabler-icon-player-play-filled, .tabler-icon-player-pause-filled");
+          const button = icon?.closest("button");
+          const toolbar = button?.parentElement;
+          if (!toolbar) return;
+          button.setAttribute("aria-label", icon.classList.contains("tabler-icon-player-pause-filled") ? "Pause robot animation" : "Play robot animation");
+          toolbar.querySelector(".mantine-NumberInput-input")?.setAttribute("aria-label", "Playback time in seconds");
+          toolbar.querySelector('input[role="combobox"]')?.setAttribute("aria-label", "Playback speed");
+        };
+        new MutationObserver(labelPlaybackControls).observe(root, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+        labelPlaybackControls();
+      })();
+    </script>
   </body>
 </html>

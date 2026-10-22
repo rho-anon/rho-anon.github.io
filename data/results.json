@@ -3,6 +3,7 @@
   "sources": {
     "libero": "LIBERO-PRO evaluation: selected repository evaluated on 500 trials per cell, 3000 total. Baseline cell means use a per-task reconstruction of the six-cell comparison.",
     "robosuite": "Robosuite experiments: per-task comparisons, single-mutation and structural-prior ablations.",
+    "liveReaas": "GPT-6.1 Sol policy development with and without live REaaS, starting from the same initial evaluation feedback. Each resulting repository is evaluated on the same 700 Robosuite trials using the same robot APIs.",
     "latency": "CaP-X timing table: multi-turn and single-turn execution, mean of 20 cube-stack trials. RHO: single-turn execution, mean of 20 cube-stack trials. Published baseline timing and success results use different prompt configurations and are separate measurements.",
     "rai": "RAI O3DE evaluation: easy/hard held-out results and deployment computation. Success is mean task score, including partial credit, over 21 tasks and 3 runs. Standard deviations are across runs. Compute totals are representative single runs over 21 tasks.",
     "physical": "Sim-to-real evaluation, 20 trials for each of three task/embodiment pairs. Policy code unchanged; embodiment-specific primitive implementations."
@@ -41,6 +42,14 @@
     {"configuration": "Claude Code Sonnet 4.6", "success": 21.14},
     {"configuration": "Qwen3.6-27B", "success": 13.43}
   ],
+  "liveReaas": {
+    "model": "GPT-6.1 Sol",
+    "trialsPerPolicy": 700,
+    "conditions": [
+      {"configuration": "Without live REaaS", "successes": 266, "success": 38},
+      {"configuration": "With live REaaS", "successes": 511, "success": 73}
+    ]
+  },
   "rai": [
     {"difficulty": "Easy", "configuration": "Repository", "seed": 68.3, "seedSD": 9.9, "evolved": 88.9, "evolvedSD": 2.8, "lift": 20.6, "seedCalls": 108, "evolvedCalls": 89, "callsChange": -17.6, "seedSeconds": 686, "evolvedSeconds": 660, "secondsChange": -3.8},
     {"difficulty": "Easy", "configuration": "Prompt only", "seed": 65.1, "seedSD": 7.3, "evolved": 79.4, "evolvedSD": 2.8, "lift": 14.3, "seedCalls": 98, "evolvedCalls": 89, "callsChange": -9.2, "seedSeconds": 630, "evolvedSeconds": 578, "secondsChange": -8.2},
