@@ -59,31 +59,31 @@ Multi-turn Code-as-Policies systems spend deployment time generating and correct
 
 ### Kinova Gen3 with Robotiq gripper
 
-These selected trials are shown at 1× speed. The full mouse-lifting evaluation contains 20 trials: 17 successes and 3 failures. The arm runs at its configured speed.
+We evaluated mouse lifting over 20 trials: 17 successes and 3 failures. We show selected trials at 1× speed, with the arm running at its configured speed.
 
 Three things change between simulation and these trials.
 
  
  1
  A new object
- The search ran on cubes. Deployment lifts a computer mouse, absent from simulation.
+ We ran the search on cubes, then deployed the repository to lift a computer mouse absent from simulation.
  
  
  2
  A moved position
- A hand moves the mouse between trials, and once during execution.
+ We moved the mouse between trials and, in one trial, during execution.
  
  
  3
  A different embodiment
- Simulation ran on a Franka Panda. These trials run on a Kinova Gen3.
+ We searched with a simulated Franka Panda and deployed the same repository on a Kinova Gen3.
  
 
 ### Reading the failure
 
 The arm descends three times onto the spot the mouse left. Grasp synthesis falls back to a path that places the grasp at the median of a segmentation mask's deprojected depth points, with orientation from a fixed top-down set. Those fall-back attempts stay anchored to the initial observation, so every retry targets a stale pose.
 
-We found this by watching the trial, reading the logs and walking the code. A proposed twelve-line repair refreshes the object observation before a fallback retry, without retraining or new demonstrations. The proposed repair remains untested in these trials.
+We found this by watching the trial, reading the logs and walking the code. We proposed a twelve-line repair that refreshes the object observation before a fallback retry, without retraining or new demonstrations. We have not tested this repair in these trials.
 
 ### Simulation infrastructure
 
